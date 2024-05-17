@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP AJAX (JS)</title>
+</head>
+<body>
+    <h1>CRUD API REST AJAX</h1>
+    <section class="crud">
+      <article>
+        <h2 class="crud-title">Agregar Posts</h2>
+        <form class="crud-form">
+          <input type="text" name="nombre" placeholder="Title" required>
+          <br>
+          <input type="number" name="views" placeholder="Views" required>
+          <br>
+          <input type="submit" value="Enviar">
+          <input type="hidden" name="id">
+        </form>
+      </article>
+      <article>
+        <h2>Ver Posts</h2>
+        <table class="crud-table">
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Views</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+    </section>
+    <template id="crud-template">
+      <tr>
+        <td class="title"></td>
+        <td class="views"></td>
+        <td>
+          <button class="edit">Editar</button>
+          <button class="delete">Eliminar</button>
+        </td>
+      </tr>
+    </template>
+    <script>
+
+      const table = document.querySelector(".crud-table"),
+            form = document.querySelector(".crud-table"),
+            title = document.querySelector(".crud-title"),
+            template = document.getElementById("crud-template").content,
+            fragment = document.createDocumentFragment();
+
+            console.log(template);
+          
+            const ajax = ({url, method, success, data, error}) =>{
+
+              const xhr = new XMLHttpRequest()
+
+              xhr.addEventListener("readystatechange", e =>{
+                    if (xhr.readyState !== 4) return
+
+                    if (xhr.status >= 200 && xhr.status <= 299) {
+                        let json = JSON.parse(xhr.response);
+                             success(json);
+                      }else{
+                        let mensaje = xhr.statusText || "Ocurrio un error"
+                             error(`Error ${mensaje}`);
+                      }
+              })
+                  xhr.open(method || "GET", url);
+                  xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+                  xhr.send(JSON.stringify(data));
+            }
+
+            
+            const getAll = () =>{
+              ajax({
+                url: 'http://localhost:5000/posts',
+                method: 'GET',
+                success: (response)=>{
+                  console.log(response);
+                  response.forEach(element => {
+                    template.querySelector(".title").textContent = element.title;
+                    template.querySelector(".views").textContent = element.views; 
+                    template.querySelector(".edit").dataset.id = element.id; 
+                    template.querySelector(".edit").dataset.name = element.title; 
+                    template.querySelector(".edit").dataset.views = element.views; 
+
+                    let clone = document.importNode(template, true); 
+                    fragment.appendChild(clone);
+                  });
+
+                  table.querySelector("tbody").appendChild(fragment);
+                },
+                error: (error) =>{
+                  table.insertAdjacentHTML("afterend", `<p><b>${error}</b></p>`)
+                }
+              })
+            }
+
+            document.addEventListener("click", e =>{
+                if (e.target.matches(".edit")) {
+
+                  
+                }
+            })
+
+            document.addEventListener("submit", e =>{
+                if (e.target == form) {   
+                  e.preventDefault();
+
+                  if (e.target.value) {            
+                    ajax({
+                      url: 'http://localhost:5000/posts',
+                      method: 'GET',
+                      success: (res)=> { console.log(res)},
+                      error: (error) => { 
+                        form.insertAdjacentHTML("afterend", `<p><b>${error}</b></p>`)
+                      }
+                    })
+                  }
+                  
+                }
+            })
+            
+            document.addEventListener("DOMContentLoaded", getAll)
+
+        
+    </script>
+  </body>
+</body>
+</html>

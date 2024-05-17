@@ -1,0 +1,49 @@
+{
+  "posts": [
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    },
+    {
+      "id": "3",
+      "title": "title diferent",
+      "views": 300
+    },
+    {
+      "id": "4",
+      "title": "barcelona title",
+      "views": 400
+    },
+    {
+      "id": "5",
+      "title": "este es un Nuevo",
+      "views": 400
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": null
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": null
+    },
+    {
+      "id": "3",
+      "text": "about post 1, very good",
+      "postId": "2"
+    },
+    {
+      "id": "4",
+      "text": "put, yes comment",
+      "postId": "3"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

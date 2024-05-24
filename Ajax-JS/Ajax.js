@@ -41,18 +41,16 @@
         const $fetch = document.getElementById("fetch"),
         $fragment = document.createDocumentFragment();
 
-        fetch("https://jsonplaceholder.typicode.com/user").then((res)=>{
+        fetch("https://jsonplaceholder.typicode.com/users").then((res)=>{
             console.log(res);
             return res.ok == true ? res.json() : Promise.reject(res);
         }).then((json)=>{
-                console.log(json);
                 json.forEach(element => {
                    const $li = document.createElement("li");
                    $li.innerHTML = `${element.name} -- ${element.email} -- ${element.phone}`;
-                   $fragment.appendChild($li)
+                   $fragment.appendChild($li);
                 });
                 $fetch.appendChild($fragment);
-
 
         }).catch((err)=>{
             console.log(err);

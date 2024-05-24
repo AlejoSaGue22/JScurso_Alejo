@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>🌘🌘 CRUD API REST CON FETCH 🍾🍾</h1>
+    <section class="crud">
+      <article>
+        <h2 class="crud-title">Agregar Posts</h2>
+        <form class="crud-form">
+          <input type="text" name="nombre" placeholder="Title" required>
+          <br>
+          <input type="number" name="views" placeholder="Views" required>
+          <br>
+          <input type="submit" value="Enviar">
+          <input type="hidden" name="id">
+        </form>
+      </article>
+      <article>
+        <h2>Ver Posts</h2>
+        <table class="crud-table">
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Views</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </article>
+    </section>
+    <template id="crud-template">
+      <tr>
+        <td class="title"></td>
+        <td class="views"></td>
+        <td>
+          <button class="edit">Editar</button>
+          <button class="delete">Eliminar</button>
+        </td>
+      </tr>
+    </template>
+    <script>
+
+        const table = document.querySelector(".crud-table"),
+              template = document.querySelector("#crud-template").content,
+              title = document.querySelector(".crud-title"),
+              form = document.querySelector(".crud-form"),
+              fragment = document.createDocumentFragment();
+
+            const getAll = async () => {
+                try {
+                    console.log(location);
+                    console.log(navigator);
+                    let res = await fetch("http://localhost:5000/posts");
+                    let json = await res.json();
+                    
+                    if (!res.ok) throw { status: res.status, statusText: res.statusText }
+
+                    json.forEach(element => {
+                        template.querySelector(".title").textContent = element.title;
+                        template.querySelector(".views").textContent = element.views;
+                        template.querySelector(".edit").dataset.id   = element.id;
+                        template.querySelector(".edit").dataset.title = element.title;
+                        template.querySelector(".edit").dataset.views = element.views;
+                        template.querySelector(".delete").dataset.id  = element.id;
+                  
+                        let clone = document.importNode(template, true);
+                        fragment.appendChild(clone);
+                    });
+                        table.querySelector("tbody").appendChild(fragment);
+                    
+                } catch (error) {
+                    let mensaje = error.statusText || "Ocurrio un error";
+                    table.insertAdjacentHTML("afterend", `<p><b>Error ${error.status}: ${mensaje}</b></p>`);
+                }
+            }
+
+            const deletePost = async (id) =>{
+                try {
+                    let respuesta = await fetch(`http://localhost:5000/posts/${id}`, 
+                        {
+                            method: 'DELETE',
+                        }
+                    );
+                    let json = await respuesta.json();
+
+                    if(!respuesta.ok) throw { status: respuesta.status }
+                    
+                    getAll();
+                } catch (error) {
+                    table.insertAdjacentHTML("afterend", `<p>Error <b>${error.status}</b></p>`)
+                }
+            }
+
+            document.addEventListener("submit", async e => {
+                if (e.target == form) {
+                    e.preventDefault();
+
+                    if (!e.target.id.value) {
+                        // CREAR --- POST
+                        try {
+                            let options = {
+                              method: "POST",
+                              headers: {
+                                  "Content-Type": "application/json; charset=utf-8"
+                              },
+                              body: JSON.stringify({
+                                  title: e.target.nombre.value,
+                                  views: e.target.views.value
+                              })
+                            };
+                            
+                            let respuesta = await fetch("http://localhost:5000/posts", options)
+                            let json = respuesta.json();
+  
+                            if(!respuesta.ok) throw { status: respuesta.status }
+                            
+                        } catch (error) {
+                            let mensaje = error.statusText || "Ocurrio un error";
+                            form.insertAdjacentHTML("afterend", `<p><b>Error ${error.status}: ${mensaje}</b></p>`);
+                        }
+
+                    }else{
+                        // EDIT ----
+                        try {
+                            let options = {
+                              method: "PUT",
+                              headers: {
+                                  "Content-Type": "application/json; charset=utf-8"
+                              },
+                              body: JSON.stringify({
+                                  title: e.target.nombre.value,
+                                  views: e.target.views.value
+                              })
+                            };
+                            
+                            let respuesta = await fetch(`http://localhost:5000/posts/${e.target.id.value}`, options)
+                            let json = respuesta.json();
+  
+                            if(!respuesta.ok) throw { status: respuesta.status }
+                            
+                        } catch (error) {
+                            let mensaje = error.statusText || "Ocurrio un error";
+                            form.insertAdjacentHTML("afterend", `<p><b>Error ${error.status}: ${mensaje}</b></p>`);
+                        }
+                    }
+                }
+            })
+
+            document.addEventListener("click", e =>{
+                    if (e.target.matches(".edit")) {
+                        title.textContent = 'Editar Post';
+                        form.nombre.value = e.target.dataset.title;
+                        form.views.value = e.target.dataset.views;
+                        form.id.value = e.target.dataset.id;
+                    }
+
+                    if (e.target.matches(".delete")) {
+                        if (confirm("¿Deseas eliminar el post?")) {
+                            deletePost(e.target.dataset.id);
+                        }
+                    }
+            })
+
+              document.addEventListener("DOMContentLoaded", getAll)
+
+
+
+            
+
+
+
+
+    </script>
+</body>
+</html>

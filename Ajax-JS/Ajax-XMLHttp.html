@@ -46,12 +46,10 @@
     <script>
 
       const table = document.querySelector(".crud-table"),
-            form = document.querySelector(".crud-table"),
+            form = document.querySelector(".crud-form"),
             title = document.querySelector(".crud-title"),
             template = document.getElementById("crud-template").content,
             fragment = document.createDocumentFragment();
-
-            console.log(template);
           
             const ajax = ({url, method, success, data, error}) =>{
 
@@ -79,18 +77,17 @@
                 url: 'http://localhost:5000/posts',
                 method: 'GET',
                 success: (response)=>{
-                  console.log(response);
                   response.forEach(element => {
                     template.querySelector(".title").textContent = element.title;
                     template.querySelector(".views").textContent = element.views; 
                     template.querySelector(".edit").dataset.id = element.id; 
                     template.querySelector(".edit").dataset.name = element.title; 
                     template.querySelector(".edit").dataset.views = element.views; 
+                    template.querySelector(".delete").dataset.id = element.id; 
 
                     let clone = document.importNode(template, true); 
                     fragment.appendChild(clone);
                   });
-
                   table.querySelector("tbody").appendChild(fragment);
                 },
                 error: (error) =>{
@@ -99,28 +96,56 @@
               })
             }
 
-            document.addEventListener("click", e =>{
+            document.addEventListener("click", e =>{        
                 if (e.target.matches(".edit")) {
+                 form.nombre.value =  e.target.dataset.name;
+                 form.views.value =  e.target.dataset.views;
+                 form.id.value =  e.target.dataset.id;
+                 title.textContent = 'Editar Post';                  
+                }
 
-                  
+                if (e.target.matches(".delete")) {
+                  if (confirm("Deseas eliminar el post?")) {
+                    ajax({
+                        url: `http://localhost:5000/posts/${e.target.dataset.id}`, 
+                        method: 'DELETE',
+                        success: (res)=> { getAll() },
+                        error: (error) => { 
+                          form.insertAdjacentHTML("afterend", `<p><b>${error}</b></p>`)
+                        },
+                      })
+                  }            
                 }
             })
 
-            document.addEventListener("submit", e =>{
-                if (e.target == form) {   
+            document.addEventListener("submit", e => {
+              if (e.target == form) {   
+                  console.log(e);
                   e.preventDefault();
-
-                  if (e.target.value) {            
+                  if (!e.target.id.value) {  
+                    // CREATE - POST --------          
                     ajax({
                       url: 'http://localhost:5000/posts',
-                      method: 'GET',
-                      success: (res)=> { console.log(res)},
+                      method: 'POST',
+                      success: (res)=> { getAll() },
                       error: (error) => { 
                         form.insertAdjacentHTML("afterend", `<p><b>${error}</b></p>`)
-                      }
+                      },
+                      data: {title: e.target.nombre.value , views: e.target.views.value }
                     })
+                  }else{
+                    // UPDATE - PUT --------
+                    ajax({
+                      url: `http://localhost:5000/posts/${e.target.id.value}`,
+                      method: 'PUT',
+                      success: (res)=> { getAll() },
+                      error: (error) => { 
+                        form.insertAdjacentHTML("afterend", `<p><b>${error}</b></p>`)
+                      },
+                      data: {title: e.target.nombre.value , views: e.target.views.value }
+                    })
+          
                   }
-                  
                 }
             })
             

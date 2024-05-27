@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario con Fetch  y FormSubmit</title>
+    <title>Formulario con Fetch  y PHP</title>
     <style>
           html {
       box-sizing: border-box;
@@ -113,7 +113,7 @@
 
         <input type="text" name="subjet" placeholder="Asunto a tratar" title="El asunto es Requerido" required>
 
-        <textarea name="" cols="50" rows="5" placeholder="Escriba sus comentarios" data-pattern="^.{1,255}$"
+        <textarea name="comments" cols="50" rows="5" placeholder="Escriba sus comentarios" data-pattern="^.{1,255}$"
          title="Tu comentario no debe exceder los 255 caracteres" required></textarea>
         <input class="enviaInput" type="submit" value="Enviar">
 
@@ -165,10 +165,11 @@
               mensaje = document.querySelector(".contact-form-response");
 
               cargando.classList.remove("none");
-
-              fetch("https://formsubmit.coaaaaa/ajax/alejodejesus2@gmail.com",{
+  
+              fetch("Ejercicios-AJAX/assets/send_mail.php",{
                     method: 'POST',
-                    body: new FormData(e.target)
+                    body: new FormData(e.target),
+                    mode: "cors"
               }).then(res => res.ok ? res.json() : Promise.reject(res))
                 .then(json => { 
                   mensaje.classList.remove("none");

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador TV</title>
+    <style>
+        .row{
+            display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+        }
+
+        figcaption{
+            font-size: 20px;
+            font-weight: 500;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>Buscador de Shows</h2>
+    <input type="text" class="input-file" placeholder="Buscar..." required>
+    <button class="Btn-Search">Buscar</button>
+
+    <div class="row">
+
+    </div>
+    <script>
+        const $input = document.querySelector(".input-file");
+
+        const buscarApi = async(ruta)=> {
+                try {
+                    let respuesta = await fetch(`https://api.tvmaze.com/search/shows?q=${ruta}`),
+                    res = await respuesta.json();
+                    console.log(respuesta);
+                    let $template = "";
+
+                    if (respuesta.ok) {
+                        for (let i = 0; i < res.length; i++) {
+                       try {
+                        let show = res[i].show;
+
+                        $template += `
+                                <div class="card">
+                                    <img src="${show.image.medium}" alt="${show.name}"/>
+                                    <figcaption>${show.name.toUpperCase()}</figcaption>
+                                    <b>Genero: </b><label>${show.genres[i] || ""}</label>
+                                    <label>${show.summary || "NO TIENE DESCRIPCION"}</label>
+                                    <a href="${show.officialSite}">Ver sitio</a>
+                                </div>
+                            `;
+
+                       } catch (error) {
+                        
+                       }     
+                            
+                        }
+
+                        document.querySelector(".row").innerHTML = $template;
+
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+        }
+
+        buscarApi($input.value);
+
+        document.addEventListener("click", e => {
+            if (e.target.matches(".Btn-Search")) {
+                      buscarApi($input.value);  
+            }
+        })
+    </script>
+</body>
+</html>

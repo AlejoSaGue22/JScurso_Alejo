@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API POKEMON</title>
+    <style>
+          html {
+      text-align: center;
+      zoom: 120%
+    }
+
+    *{
+        font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .grid-fluid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      text-align: center;
+    }
+
+    .loader {
+      display: block;
+      margin: auto;
+    }
+    figure{
+        border: 1px solid royalblue;
+        border-radius: 15px;
+        background-color: aquamarine;
+    }
+
+    </style>
+</head>
+<body>
+    <h1>Pokèmons</h1>
+    <nav class="links"></nav>
+    <main class="grid-fluid"></main>
+
+    <script>
+            const main$ = document.querySelector(".grid-fluid"),
+                  nav$ = document.querySelector("nav");
+
+                  let urlPrincipal = "https://pokeapi.co/api/v2/pokemon/";
+
+                 async function loadPokemos(url){
+                    try { 
+                        main$.innerHTML = `<img class="loader" src="../assets/tail-spin.svg" alt="Cargando">`
+                        let res = await fetch(url)
+                        let respuesta = await res.json(),
+                        $tempalte = "",
+                        $previous,
+                        $next;
+
+                        // console.log(respuesta); 
+                        // if(!respuesta.ok) throw {status: res.status, statusText: res.statusText}
+
+                        
+                        for (let i = 0; i < respuesta.results.length; i++) {
+                            try {
+                                let res2 = await fetch(respuesta.results[i].url);
+                                let resUrl = await res2.json();
+
+                                // console.log(res)
+                                // console.log(resUrl);
+                                // if(!resUrl.ok) throw {status: res2.status, statusText: res2.statusText}
+
+                                $tempalte += `
+                                    <figure>
+
+
+                                        <img src="${resUrl.sprites.front_default}" alt="${resUrl.name}">
+                                        <figcaption>${resUrl.name.toUpperCase()}</figcaption>
+                                    </figure>
+                                `;
+                                
+                            } catch (error) {
+                               let mensaje = error.statusText || "Ocurrio un error"
+                               $tempalte += `
+                                        <figure>                                     
+                                                <figcaption>Error al cargar: ${mensaje}</figcaption>
+                                        </figure>
+                                             `
+                            } 
+                        }
+                        console.log($tempalte);
+                        main$.innerHTML = $tempalte;
+                        $previous = respuesta.previous ? `<button name="${respuesta.previous}">◀️</button>` : "";
+                        $next = respuesta.next ? `<button name="${respuesta.next}">▶️</button>` : "";
+                        nav$.innerHTML = $previous + " "+$next;
+                        
+
+                    } catch (error) {
+                        main$.innerHTML = `<p> Error: ${error}</p>`
+                        console.log(error);
+                    }
+                 }
+
+                 loadPokemos(urlPrincipal)
+
+                 document.addEventListener("click", e => {
+                    console.log(e);
+                    if (e.target.matches("button")) {
+                        console.log(e.target.name);
+                        loadPokemos(e.target.name)
+                    }
+                 })
+
+
+
+    </script>
+</body>
+</html>

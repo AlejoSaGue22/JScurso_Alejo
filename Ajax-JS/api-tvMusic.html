@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API-CANCIONES</title>
+    <style>
+            html {
+      font-family: sans-serif;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      padding-top: 1rem;
+    }
+
+    .loader{
+        display: none;
+    }
+
+    h2{
+        display: none;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .song blockquote {
+      white-space: pre-wrap;
+    }
+
+    @media screen and (min-width: 800px) {
+      main {
+        flex-direction: row;
+      }
+
+      main>* {
+        padding: 1rem;
+        flex-basis: 50%;
+      }
+    }
+    </style>
+</head>
+<body>
+    <h1>Buscador de Canciones</h1>
+    <form id="song-search">
+        <input type="text" name="artist" placeholder="Nombre del artista" required>
+        <br>
+        <br>
+        <input type="text" name="cancion" placeholder="Nombre de la cancion" required>
+        <br>
+        <br>
+        <input type="submit">
+    </form>
+    <img src="../assets/tail-spin.svg" class="loader"  alt="loader">
+    <aside class="error"></aside>
+    <main>
+        <article class="artist">
+            <h2>Informacion del Artista</h2>
+        </article>
+        <article class="song">
+            <h2>Letra de la cancion</h2>
+        </article>
+    </main>
+
+    <script>
+            const $form = document.getElementById("song-search"),
+                  $main = document.querySelector("main"),
+                  $articleArtis = document.querySelector(".artist"),
+                  $articleSong = document.querySelector(".song"),
+                  $loader = document.querySelector(".loader")
+                  console.log($articleArtis);
+                  console.log($articleSong);
+
+                  function formatText(value){
+                        let text = value.split(" ")
+                        let nuevo = text.join("")
+
+                        return nuevo
+                  }
+            $form.addEventListener("submit", async (e)=>{
+                e.preventDefault();
+                try {
+                    $loader.style.display = 'block';
+                    document.querySelectorAll("h2").forEach(ele => { ele.style.display = 'block' })
+                    let artist = e.target.artist.value,
+                        song = e.target.cancion.value,
+                        song2 = e.target,
+                        apiArtist = fetch(`https://www.theaudiodb.com/api/v1/json/2/search.php?s=${formatText(artist)}`)
+                        apiGenre = fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`);
+                        let [artisRes, songRes] = await Promise.all([apiArtist, apiGenre]);
+
+                        let dataArtist = await artisRes.json(),
+                            dataSong = await songRes.json();
+
+                            // console.log(dataArtist);
+                            console.log(dataSong);
+                            console.log(artisRes,songRes);
+                            console.log(apiArtist,songRes);
+                        
+                        
+                        console.log(song2);
+                } catch (error) {
+                    console.log(error);
+                    // $loader.style.display = 'none';
+                    $articleArtis.insertAdjacentText("beforebegin", error)
+
+
+                }
+            })
+    </script>
+    
+</body>
+</html>

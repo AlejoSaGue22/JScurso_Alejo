@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento de dos páginas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .page {
+            page-break-after: always;
+            padding: 20px;
+            width: 21cm;
+            height: 29.7cm;
+            box-sizing: border-box;
+        }
+        .header, .footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .content {
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .table th, .table td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f2f2f2;
+        }
+
+        @media print {
+            .page {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <div class="header">
+            <h1>CAJACOPI EPS SAS</h1>
+            <p>NIT : 901.543.211-6</p>
+        </div>
+
+        <div class="content">
+            <p><strong>Cuenta:</strong> 8001 BARRANQUILLA</p>
+            <p><strong>Concepto:</strong> NC NOTA CREDITO</p>
+            <p><strong>Tercero Destino:</strong> 0</p>
+            <p><strong>Vendedor:</strong> BUSTILLO AMADOR AYLIN PAOLA</p>
+            <p><strong>Tercero:</strong> 800129856 CLINICA DE LA COSTA S.A.S. Ciudad BARRANQUILLA</p>
+            <p><strong>Direccion:</strong> Calle 44 N 46-17, BARRANQUILLA</p>
+            <p><strong>Numero:</strong> 145855</p>
+            <p><strong>Fecha:</strong> 01/08/2024</p>
+            <p><strong>Página:</strong> 1 de 2</p>
+
+            <h2>MOVIMIENTO DE CARTERA</h2>
+            <table class="table">
+                <tr>
+                    <th>Debito</th>
+                    <th>Credito</th>
+                    <th>Documento</th>
+                    <th>Factura</th>
+                    <th>Contrato</th>
+                </tr>
+                <tr>
+                    <td>0,00</td>
+                    <td>96.154.263,00</td>
+                    <td>GL 222357</td>
+                    <td>8001 CC761458</td>
+                    <td>0</td>
+                </tr>
+                <!-- Agrega más filas según sea necesario -->
+            </table>
+
+            <p><strong>PAGO GIRO DIRECTO A TRAVES DEL MINISTERIO DE LA PROTECCION SOCIAL EN VIRTUD DE LA RESOLUCION 1587 Y 4621 DE 2016 Y LA RESOLUCION 3110 DE 2018. MES DE JULIO DEL 2024 MODALIDAD EVENTO - ACUERDO DE PAGO -</strong></p>
+        </div>
+
+        <div class="footer">
+            <p>Impresion: 19/08/2024 18:37:14</p>
+            <p>Estado: Procesado</p>
+            <p>Impreso por: alejandro.santiagoCOPIA</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <h1>CAJACOPI EPS SAS</h1>
+            <p>NIT : 901.543.211-6</p>
+        </div>
+
+        <div class="content">
+            <p><strong>Cuenta:</strong> 8001 BARRANQUILLA</p>
+            <p><strong>Concepto:</strong> NC NOTA CREDITO</p>
+            <p><strong>Tercero Destino:</strong> 0</p>
+            <p><strong>Vendedor:</strong> BUSTILLO AMADOR AYLIN PAOLA</p>
+            <p><strong>Tercero:</strong> 800129856 CLINICA DE LA COSTA S.A.S. Ciudad BARRANQUILLA</p>
+            <p><strong>Direccion:</strong> Calle 44 N 46-17, BARRANQUILLA</p>
+            <p><strong>Numero:</strong> 145855</p>
+            <p><strong>Fecha:</strong> 01/08/2024</p>
+            <p><strong>Página:</strong> 2 de 2</p>
+
+            <h2>MOVIMIENTO DE CARTERA (continuación)</h2>
+            <table class="table">
+                <tr>
+                    <th>Debito</th>
+                    <th>Credito</th>
+                    <th>Documento</th>
+                    <th>Factura</th>
+                    <th>Contrato</th>
+                </tr>
+                <tr>
+                    <td>0,00</td>
+                    <td>96.154.263,00</td>
+                    <td>GL 222358</td>
+                    <td>8001 CC761459</td>
+                    <td>0</td>
+                </tr>
+                <!-- Agrega más filas según sea necesario -->
+            </table>
+
+            <p><strong>PAGO GIRO DIRECTO A TRAVES DEL MINISTERIO DE LA PROTECCION SOCIAL EN VIRTUD DE LA RESOLUCION 1587 Y 4621 DE 2016 Y LA RESOLUCION 3110 DE 2018. MES DE JULIO DEL 2024 MODALIDAD EVENTO - ACUERDO DE PAGO -</strong></p>
+        </div>
+
+        <div class="footer">
+            <p>Impresion: 19/08/2024 18:37:14</p>
+            <p>Estado: Procesado</p>
+            <p>Impreso por: alejandro.santiagoCOPIA</p>
+        </div>
+    </div>
+
+</body>
+</html>

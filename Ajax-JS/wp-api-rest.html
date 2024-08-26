@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORD PRESS API REST</title>
+</head>
+<body>
+    <h1>WordPress REST API</h1>
+    <article id="site" class="sites"></article>
+    <section id="post" class="posts"></section>
+    <img src="/assets/tail-spin.svg" class="loader" alt="Cargando.....">
+            <template id="post-template">
+                <article class="post">
+                    <img class="post-image">
+                    <aside>
+                        <h2 class="post-title"></h2>
+                        <figure class="post-author"></figure>
+                        <small class="post-date"></small>
+                        <a class="post-link" target="_blank">Ver publicacion original</a>
+                        <p class="post-except"></p>
+                            <div class="post-categories"></div>
+                            <div class="post-tags"></div>
+                        <details class="post-content">
+                            <summary>Ver contenido de la publicacion</summary>
+                            <article></article>
+                        </details>
+                    </aside>
+                </article>
+                <hr>
+            </template>
+    <script>
+
+        const $site = document.querySelector("#site"),
+              $post = document.querySelector("#post"),
+              $loader = document.querySelector(".loader"),
+              $template = document.querySelector("#post-template").content,
+              $fragment = document.createDocumentFragment(),
+              DOMAIN = "https://LucyLara.com",
+              SITE = `${DOMAIN}/wp-json`,
+              API_WP = `${SITE}/wp/v2`,
+              POSTS = `${API_WP}/posts?_embed`,
+              PAGES = `${API_WP}/pages`,
+              CATEGORIES = `${API_WP}/categories`;
+              // let headers = new Headers();
+
+            // headers.append('Content-Type', 'application/json');
+            // headers.append('Accept', 'application/json');
+
+        function getSiteData(){
+            fetch(SITE).then(res => res.ok ? res.json() : Promise.reject(res)).then(res =>{
+                console.log(res);
+                $site.innerHTML = `
+                                    <h3>Sitio Web</h3>
+                                    <h2>
+                                    <a href="${res.url}" target="_blank">${res.name}</a>
+                                    </h2>
+                                    <p>${res.description}</p>
+                                    <p>${res.timezone_string}</p>
+                                 `
+            }).catch(err => {
+                console.log(err);
+                let mensaje = err.statustext || "Ocurrio un error";
+                $site.innerHTML = `<p>Error ${mensaje} </p>`;
+                $loader.style.display = 'none';
+            })
+        }
+
+        function getposts(){
+                fetch(POSTS).then(res => res.ok ? res.json() : Promise.reject(res))
+                .then(res => {
+                    // $template.cloneNode(true)
+console.log(res);
+
+            res.forEach(element => {
+                        let categories = "",
+                            tags = "";
+                        
+                            element._embedded["wp:term"][0].forEach(ele => categories += `<li>${ele.name}</li>`)
+                            element._embedded["wp:term"][1].forEach(ele => tags += `<li>${ele.name}</li>`)
+
+                        $template.querySelector(".post-title").innerHTML += element.title.rendered;
+                        $template.querySelector(".post-image").src = element._embedded["wp:featuredmedia"][0].source_url
+                        $template.querySelector(".post-image").alt = element._embedded["wp:featuredmedia"][0].title.rendered
+                        $template.querySelector(".post-author").innerHTML = `
+                            <img src="${element._embedded.author[0].avatar_urls[48]}" alt="${element._embedded.author[0].name}"
+                            <figcaption>${element._embedded.author[0].name}</figcaption>
+                        `;
+
+                        $template.querySelector(".post-date").innerHTML = new Date(element.date).toLocaleDateString();
+                        $template.querySelector(".post-link").href = element.link;
+                        $template.querySelector(".post-except").innerHTML =  element.excerpt.rendered.replace("[&hellip]","....");
+                        $template.querySelector(".post-categories").innerHTML =  `
+                            <p>Categories: ${categories}</p>
+                            <ul>Tags: ${tags}</ul>
+                        `;
+                        $template.querySelector(".post-content > article").innerHTML = element.content.rendered;
+
+
+                            
+                        console.log($template);
+                    });
+                    $loader.style.display = 'none';
+                    $fragment.appendChild($template);
+                    $site.appendChild($fragment)
+                })
+                .catch(error => {
+                    console.log(error);
+                    let mensaje = error.statustext || 'Ocurrio un error';
+                    $site.innerHTML = `Error: ${error.status}: ${mensaje}`;
+                    $loader.style.display = 'none';
+                })
+        }
+
+        document.addEventListener("DOMContentLoaded", e => {
+            getSiteData()
+            getposts() 
+        })
+
+
+    </script>
+</body>
+</html>

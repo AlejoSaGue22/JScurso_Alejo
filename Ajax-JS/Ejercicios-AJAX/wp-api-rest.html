@@ -4,11 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WORD PRESS API REST</title>
+    <style>
+        html {
+          box-sizing: border-box;
+          font-family: 'Raleway', sans-serif;
+          font-size: 16px;
+        }
+    
+        *,
+        *:after,
+        *:before {
+          box-sizing: inherit;
+        }
+    
+        a {
+          color: #01579b;
+          transition: all .3s ease-out;
+        }
+    
+        a:hover {
+          opacity: .75;
+        }
+    
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+    
+        h1 {
+          text-align: center;
+        }
+    
+        hr {
+          border: thin solid #01579b;
+          margin: 3rem auto;
+          width: 80%;
+        }
+    
+        .site {
+          margin: 1rem auto;
+          padding: 1rem;
+          max-width: 50%;
+          text-align: center;
+        }
+    
+        .post {
+          margin: 1rem auto;
+          padding: 1rem;
+          border-radius: .5rem;
+          max-width: 80%;
+          text-align: center;
+          background-color: #eceff1;
+        }
+    
+        .post-author img {
+          border-radius: 50%;
+        }
+    
+        .post-date {
+          margin: 1rem auto;
+          display: block;
+        }
+    
+        .post-excerpt,
+        .post-categories,
+        .post-tags,
+        .post-content {
+          text-align: left;
+        }
+    
+        .post-content summary {
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+    
+        .post-content>article {
+          padding: 1rem;
+          background-color: #e3f2fd;
+        }
+    
+        .post-content img {
+          display: block;
+          margin: auto;
+        }
+    
+        .loader {
+          display: none;
+          margin: 2rem auto;
+        }
+      </style>
 </head>
 <body>
     <h1>WordPress REST API</h1>
-    <article id="site" class="sites"></article>
-    <section id="post" class="posts"></section>
+    <article id="site" class="site"></article>
+    <section id="post" class="post"></section>
     <img src="/assets/tail-spin.svg" class="loader" alt="Cargando.....">
             <template id="post-template">
                 <article class="post">
@@ -36,16 +125,15 @@
               $loader = document.querySelector(".loader"),
               $template = document.querySelector("#post-template").content,
               $fragment = document.createDocumentFragment(),
-              DOMAIN = "https://LucyLara.com",
+              DOMAIN = "https://css-tricks.com",
               SITE = `${DOMAIN}/wp-json`,
               API_WP = `${SITE}/wp/v2`,
               POSTS = `${API_WP}/posts?_embed`,
               PAGES = `${API_WP}/pages`,
               CATEGORIES = `${API_WP}/categories`;
-              // let headers = new Headers();
 
-            // headers.append('Content-Type', 'application/json');
-            // headers.append('Accept', 'application/json');
+              let page = 1,
+              posts = 5;
 
         function getSiteData(){
             fetch(SITE).then(res => res.ok ? res.json() : Promise.reject(res)).then(res =>{
@@ -61,38 +149,68 @@
             }).catch(err => {
                 console.log(err);
                 let mensaje = err.statustext || "Ocurrio un error";
-                $site.innerHTML = `<p>Error ${mensaje} </p>`;
+                $site.innerHTML = `<p>Error SITE ${mensaje} </p>`;
                 $loader.style.display = 'none';
             })
         }
 
         function getposts(){
-                fetch(POSTS).then(res => res.ok ? res.json() : Promise.reject(res))
+            $loader.style.display = 'block';
+                fetch(`${POSTS}&per_page=${page}&page=${posts}`).then(res => res.ok ? res.json() : Promise.reject(res))
                 .then(res => {
-                    // $template.cloneNode(true)
-                    res.forEach(element => {
-                        $template.querySelector(".post-title").innerHTML += element.title.rendered;
-                        $template.querySelector(".post-image").src += element._embedded["wp:featuredmedia"][0].source_url
-;
-                        console.log($template);
+            // $template.cloneNode(true)
+            console.log(res);
+            res.forEach(element => {
+                        let categories = "",
+                            tags = "";
+                        
+                            element._embedded["wp:term"][0].forEach(ele => categories += `<li>${ele.name}</li>`)
+                            element._embedded["wp:term"][1].forEach(ele => tags += `<li>${ele.name}</li>`)
+
+                        $template.querySelector(".post-title").innerHTML = element.title.rendered;
+                        $template.querySelector(".post-image").src = element._embedded["wp:featuredmedia"] ? 
+                        element._embedded["wp:featuredmedia"][0].source_url : "";
+                        $template.querySelector(".post-image").alt = element._embedded["wp:featuredmedia"] ?  
+                        element._embedded["wp:featuredmedia"][0].title.rendered : "";
+                        $template.querySelector(".post-author").innerHTML = `
+                            <img src="${element._embedded.author[0].avatar_urls[48]}" alt="${element._embedded.author[0].name}">
+                                    <figcaption>${element._embedded.author[0].name}</figcaption>
+                                `;
+                        $template.querySelector(".post-date").innerHTML = new Date(element.date).toLocaleDateString();
+                        $template.querySelector(".post-link").href = element.link;
+                        $template.querySelector(".post-except").innerHTML =  element.excerpt.rendered.replace("[&hellip]","....");
+                        $template.querySelector(".post-categories").innerHTML =  `
+                                                                    <p>Categories: ${categories}</p>
+                                                                    <ul>Tags: ${tags}</ul> `;
+                        $template.querySelector(".post-content > article").innerHTML = element.content.rendered;
+
+                        let clone = $template.cloneNode(true);
+                        $fragment.appendChild(clone);
                     });
+                    page++;
                     $loader.style.display = 'none';
-                    $fragment.appendChild($template);
-                    $site.appendChild($fragment)
+                    $site.appendChild($fragment);
                 })
                 .catch(error => {
-                    console.log(error);
                     let mensaje = error.statustext || 'Ocurrio un error';
-                    $site.innerHTML = `Error: ${error.status}: ${mensaje}`;
+                    $site.innerHTML = `Error: ${error.status}, ${mensaje}`;
                     $loader.style.display = 'none';
                 })
         }
 
         document.addEventListener("DOMContentLoaded", e => {
-            getSiteData()
-            getposts() 
+            getSiteData();
+            getposts();
         })
 
+        window.addEventListener("scroll", e => {
+            const { scrollTop, clientHeight, scrollHeight} = document.documentElement;
+            console.log(scrollTop, clientHeight, scrollHeight);
+            console.log("Suma",scrollTop + clientHeight);
+            if ((scrollTop + clientHeight) >= scrollHeight ) {
+                    getposts();
+            }
+        })
 
     </script>
 </body>

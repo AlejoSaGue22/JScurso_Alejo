@@ -1970,17 +1970,37 @@ eventoM.addEventListener("click", (e)=>{
     //   history.go(-1);
 
       
-    //   console.log("************** Objeto Navigator (navigator) **************");
-    //   console.log(navigator);
-    //   console.log(navigator.connection);
-    //   console.log(navigator.geolocation);
-    //   console.log(navigator.mediaDevices);
-    //   console.log(navigator.mimeTypes);
-    //   console.log(navigator.onLine);
-    //   console.log(navigator.serviceWorker);
-    //   console.log(navigator.storage);
-    //   console.log(navigator.usb);
-    //   console.log(navigator.userAgent);
+      // console.log("************** Objeto Navigator (navigator) **************");
+      // console.log(navigator);
+      // console.log(navigator.connection);
+      // console.log(navigator.geolocation);
+      // console.log(navigator.mediaDevices);
+      // console.log(navigator.mimeTypes);
+      // console.log(navigator.onLine);
+      // console.log(navigator.serviceWorker);
+      // console.log(navigator.storage);
+      // console.log(navigator.usb);
+      // console.log(navigator.userAgent);
+
+      // _**** FORMATEAR INPUT SOLO TEXTO  ****_
+      document.addEventListener("keyup", e => {
+        if (e.target.matches(".inputComit")) {
+           let expReg = /^[A-Za-zÑñ\s]+$/g.test(e.target.value),  //   /[^a-zA-Z0-9]/g (Solo numero y Texto)
+           section2 = e.target.parentElement;
+           if (expReg) {
+               section2.style.border = 'none'
+               section2.style.border = '3px solid #1a2e63'
+           }else{
+               section2.style.border = 'none'
+               section2.style.border = '3px solid red';
+           }
+           const reg = /[^a-zA-Z\s]/g; // Mantiene solo letras y espacios
+           let content = e.target.value;
+           content = content.replace(reg, '');
+           e.target.value = content;
+        }
+        
+   })
 
     
       

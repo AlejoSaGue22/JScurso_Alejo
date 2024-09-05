@@ -190,8 +190,7 @@
                     page++;
                     $loader.style.display = 'none';
                     $site.appendChild($fragment);
-                })
-                .catch(error => {
+                }).catch(error => {
                     let mensaje = error.statustext || 'Ocurrio un error';
                     $site.innerHTML = `Error: ${error.status}, ${mensaje}`;
                     $loader.style.display = 'none';

@@ -2002,6 +2002,13 @@ eventoM.addEventListener("click", (e)=>{
         
    })
 
+   let arr = [10, 20, 30]
+   arr[100] = 40;
+
+   console.log(arr.length);
+   console.log(arr);
+   
+
     
       
 

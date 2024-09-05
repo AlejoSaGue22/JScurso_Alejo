@@ -1,3 +1,3 @@
-import  {App, Api_Rest}  from "../app/App.js";
+import  {App}  from "../app/App.js";
 
 document.addEventListener("DOMContentLoaded", App())

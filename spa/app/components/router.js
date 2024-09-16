@@ -1,5 +1,6 @@
 import { ajax } from "../helpers/ajax.js";
 import wp_api from "../helpers/wp_api.js";
+import { ContactForm } from "./ContactForm.js";
 import { Post } from "./Post.js";
 import { PostCard } from "./PostCard.js";
 import { PostSearch } from "./PostSearch.js";
@@ -26,7 +27,6 @@ export async function Router(){
     } else if (has.includes('#/search')) {
         document.getElementById("posts").innerHTML = `<h2>Seccion del Buscador</h2>`;  
         if (!localStorage.getItem("search")) return false;
-
             await ajax({
                 url: `${wp_api.Search}${localStorage.getItem("search")}`,
                 cbSuccess: (data) =>{
@@ -45,19 +45,18 @@ export async function Router(){
                 }
             })  
     } else if (has.includes('#/contacto')) {
-        document.getElementById("posts").innerHTML = `<h2>Seccion del Contacto</h2>`;    
-        
+        document.getElementById("posts").appendChild(ContactForm()) 
     } else {
         // Post()
         document.getElementById("posts").innerHTML = `<h2>Aqui cargara el contenido del Post previamente</h2>`;        
         await ajax({
-            url: `${wp_api.Post}/${localStorage.getItem("id")}`,
-            cbSuccess: (data) => {
+                url: `${wp_api.Post}/${localStorage.getItem("id")}`,
+                cbSuccess: (data) => {
                     console.log(data);
                     document.querySelector(".loader").style.display = 'none';
                     document.querySelector("#posts").innerHTML = Post(data);
                 }
-            })
+               })
     }
     document.querySelector(".loader").style.display = 'none';
 }

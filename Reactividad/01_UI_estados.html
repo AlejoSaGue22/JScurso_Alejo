@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interfaz de Usuario basada en el Estado</title>
+</head>
+<body>
+        <h1>Interfaz de Usuario basada en el Estado</h1>
+    <form id="todo-form">
+        <input type="text" id="todo_item" placeholder="Tarea por hacer">
+        <input type="submit" value="Agregar">
+    </form>
+
+    <h2>Lista de tareas</h2>
+        <ul id="todo-list"></ul>
+
+        <script>
+                  
+
+                  // El state
+                  const state = {
+                    todolist: []
+                  }
+
+                  //Template UI
+                const template = () => {
+                    if (state.todolist.length < 1) {
+                        return `<p><em>Lista sin tareas por hacer.</em></p>`
+                    }
+
+                    let todos = state.todolist.map(item => `<li>${item}</li>`)
+                    console.log(todos);
+                    
+                    return todos;
+                }
+
+                // Render UI
+                    const render = () => {
+                        console.log(state);
+                        $list = document.getElementById("todo-list");
+                        if (!$list) return false;
+                        console.log(template());
+
+                        $list.innerHTML = template();
+                    }
+
+                    document.addEventListener("DOMContentLoaded", render)
+
+             document.addEventListener("submit", e => {
+                    if (!e.target.matches("#todo-form")) return false
+                    e.preventDefault();
+
+                const $item = document.getElementById("todo_item")
+                if(!$item) return;
+
+                state.todolist.push($item.value)
+                render()
+
+                    $item.value = '';
+                    $item.focus();
+             })
+
+        </script>
+</body>
+</html>

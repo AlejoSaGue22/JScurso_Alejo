@@ -1986,26 +1986,25 @@ eventoM.addEventListener("click", (e)=>{
            let expReg = /^[A-Za-zÑñ\s]+$/g.test(e.target.value),  //   /[^a-zA-Z0-9]/g (Solo numero y Texto)
            section2 = e.target.parentElement;
            if (expReg) {
-               section2.style.border = 'none'
-               section2.style.border = '3px solid #1a2e63'
-           }else{
-               section2.style.border = 'none'
+               section2.style.border = 'none';
+               section2.style.border = '3px solid #1a2e63';
+           } else{
+               section2.style.border = 'none';
                section2.style.border = '3px solid red';
            }
            const reg = /[^a-zA-Z\s]/g; // Mantiene solo letras y espacios
            let content = e.target.value;
            content = content.replace(reg, '');
            e.target.value = content;
-        }
-        
-   })
+         }
+      })
 
    let arr = [10, 20, 30]
    arr[100] = 40;
 
    console.log(arr.length);
    console.log(arr);
-   
+    
 
     
       

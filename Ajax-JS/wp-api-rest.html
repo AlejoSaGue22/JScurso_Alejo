@@ -8,8 +8,8 @@
 <body>
     <h1>WordPress REST API</h1>
     <article id="site" class="sites"></article>
-    <section id="post" class="posts"></section>
-    <img src="/assets/tail-spin.svg" class="loader" alt="Cargando.....">
+      <section id="post" class="posts"></section>
+      <img src="/assets/tail-spin.svg" class="loader" alt="Cargando.....">
             <template id="post-template">
                 <article class="post">
                     <img class="post-image">
@@ -22,7 +22,7 @@
                             <div class="post-categories"></div>
                             <div class="post-tags"></div>
                         <details class="post-content">
-                            <summary>Ver contenido de la publicacion</summary>
+                            <summary> Ver contenido de la publicacion</summary>
                             <article></article>
                         </details>
                     </aside>
@@ -43,7 +43,6 @@
               PAGES = `${API_WP}/pages`,
               CATEGORIES = `${API_WP}/categories`;
               // let headers = new Headers();
-
             // headers.append('Content-Type', 'application/json');
             // headers.append('Accept', 'application/json');
 
@@ -69,9 +68,8 @@
         function getposts(){
                 fetch(POSTS).then(res => res.ok ? res.json() : Promise.reject(res))
                 .then(res => {
-                    // $template.cloneNode(true)
-console.log(res);
-
+            // $template.cloneNode(true)
+            console.log(res);
             res.forEach(element => {
                         let categories = "",
                             tags = "";
@@ -84,8 +82,7 @@ console.log(res);
                         $template.querySelector(".post-image").alt = element._embedded["wp:featuredmedia"][0].title.rendered
                         $template.querySelector(".post-author").innerHTML = `
                             <img src="${element._embedded.author[0].avatar_urls[48]}" alt="${element._embedded.author[0].name}"
-                            <figcaption>${element._embedded.author[0].name}</figcaption>
-                        `;
+                            <figcaption>${element._embedded.author[0].name}</figcaption>`;
 
                         $template.querySelector(".post-date").innerHTML = new Date(element.date).toLocaleDateString();
                         $template.querySelector(".post-link").href = element.link;
@@ -96,8 +93,6 @@ console.log(res);
                         `;
                         $template.querySelector(".post-content > article").innerHTML = element.content.rendered;
 
-
-                            
                         console.log($template);
                     });
                     $loader.style.display = 'none';
@@ -116,7 +111,6 @@ console.log(res);
             getSiteData()
             getposts() 
         })
-
 
     </script>
 </body>

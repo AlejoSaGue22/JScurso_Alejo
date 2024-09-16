@@ -6,7 +6,7 @@ export function Title(){
             <a href="${wp_api.Domain}" target="_blank" rel="noopener">
                     ${wp_api.Name.toUpperCase()}
             </a>
-    `
+        `
 
     return h1
 }

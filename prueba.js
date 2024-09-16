@@ -1641,8 +1641,6 @@ let text = `
 //                  $ul3.appendChild($fragmento)
 //                  document.body.appendChild($ul3)
 
-
-
 // //    -                       ---------------------------    TEMPLATE HTML   -----------------------------------------------
 
       // const $cardss = document.querySelector(".cards"),

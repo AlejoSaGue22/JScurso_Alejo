@@ -158,43 +158,43 @@
             $loader.style.display = 'block';
                 fetch(`${POSTS}&per_page=${page}&page=${posts}`).then(res => res.ok ? res.json() : Promise.reject(res))
                 .then(res => {
-            // $template.cloneNode(true)
-            console.log(res);
-            res.forEach(element => {
-                        let categories = "",
-                            tags = "";
-                        
+                // $template.cloneNode(true)
+                console.log(res);
+                res.forEach(element => {
+                            let categories = "",
+                                tags = "";
+                            
                             element._embedded["wp:term"][0].forEach(ele => categories += `<li>${ele.name}</li>`)
                             element._embedded["wp:term"][1].forEach(ele => tags += `<li>${ele.name}</li>`)
 
-                        $template.querySelector(".post-title").innerHTML = element.title.rendered;
-                        $template.querySelector(".post-image").src = element._embedded["wp:featuredmedia"] ? 
-                        element._embedded["wp:featuredmedia"][0].source_url : "";
-                        $template.querySelector(".post-image").alt = element._embedded["wp:featuredmedia"] ?  
-                        element._embedded["wp:featuredmedia"][0].title.rendered : "";
-                        $template.querySelector(".post-author").innerHTML = `
-                            <img src="${element._embedded.author[0].avatar_urls[48]}" alt="${element._embedded.author[0].name}">
-                                    <figcaption>${element._embedded.author[0].name}</figcaption>
-                                `;
-                        $template.querySelector(".post-date").innerHTML = new Date(element.date).toLocaleDateString();
-                        $template.querySelector(".post-link").href = element.link;
-                        $template.querySelector(".post-except").innerHTML =  element.excerpt.rendered.replace("[&hellip]","....");
-                        $template.querySelector(".post-categories").innerHTML =  `
-                                                                    <p>Categories: ${categories}</p>
-                                                                    <ul>Tags: ${tags}</ul> `;
-                        $template.querySelector(".post-content > article").innerHTML = element.content.rendered;
+                            $template.querySelector(".post-title").innerHTML = element.title.rendered;
+                            $template.querySelector(".post-image").src = element._embedded["wp:featuredmedia"] ? 
+                            element._embedded["wp:featuredmedia"][0].source_url : "";
+                            $template.querySelector(".post-image").alt = element._embedded["wp:featuredmedia"] ?  
+                            element._embedded["wp:featuredmedia"][0].title.rendered : "";
+                            $template.querySelector(".post-author").innerHTML = `
+                                <img src="${element._embedded.author[0].avatar_urls[48]}" alt="${element._embedded.author[0].name}">
+                                        <figcaption>${element._embedded.author[0].name}</figcaption>
+                                    `;
+                            $template.querySelector(".post-date").innerHTML = new Date(element.date).toLocaleDateString();
+                            $template.querySelector(".post-link").href = element.link;
+                            $template.querySelector(".post-except").innerHTML =  element.excerpt.rendered.replace("[&hellip]","....");
+                            $template.querySelector(".post-categories").innerHTML =  `
+                                                                        <p>Categories: ${categories}</p>
+                                                                        <ul>Tags: ${tags}</ul> `;
+                            $template.querySelector(".post-content > article").innerHTML = element.content.rendered;
 
-                        let clone = $template.cloneNode(true);
-                        $fragment.appendChild(clone);
-                    });
-                    page++;
-                    $loader.style.display = 'none';
-                    $site.appendChild($fragment);
-                }).catch(error => {
-                    let mensaje = error.statustext || 'Ocurrio un error';
-                    $site.innerHTML = `Error: ${error.status}, ${mensaje}`;
-                    $loader.style.display = 'none';
-                })
+                            let clone = $template.cloneNode(true);
+                            $fragment.appendChild(clone);
+                        });
+                        page++;
+                        $loader.style.display = 'none';
+                        $site.appendChild($fragment);
+                    }).catch(error => {
+                        let mensaje = error.statustext || 'Ocurrio un error';
+                        $site.innerHTML = `Error: ${error.status}, ${mensaje}`;
+                        $loader.style.display = 'none';
+                    })
         }
 
         document.addEventListener("DOMContentLoaded", e => {
@@ -206,7 +206,7 @@
             const { scrollTop, clientHeight, scrollHeight} = document.documentElement;
             console.log(scrollTop, clientHeight, scrollHeight);
             console.log("Suma",scrollTop + clientHeight);
-            if ((scrollTop + clientHeight) >= scrollHeight ) {
+            if ((scrollTop + clientHeight) >= scrollHeight) {
                     getposts();
             }
         })

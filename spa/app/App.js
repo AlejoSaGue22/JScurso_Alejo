@@ -1,25 +1,15 @@
-import wp_api from "../app/helpers/wp_api.js";
-import { ajax } from "../app/helpers/ajax.js";
-import { Title } from "../app/components/Title.js";
+
 import { Loader } from "../app/components/Loader.js";
+import { headers } from "./components/headers.js";
+import { Posts } from "./components/Posts.js";
+import { Router } from "./components/router.js";
 
 export function App(){
-    // document.getElementById("root").innerHTML = `<h1>Bienvenido a mi primer SPA con Vanilla JS</h1>`;
-     document.getElementById("root").appendChild(Title())
-     document.getElementById("root").appendChild(Loader())
+  let root = document.getElementById("root");
+      root.innerHTML = null
+
+     root.appendChild(headers())
+     root.appendChild(Posts())
+     root.appendChild(Loader())
+     Router()
 }
-
-// export async function Api_Rest(url){
-//     let res = await fetch(url),
-//     json = await res.json()
-//       console.log(json);
-// }
-
-// Api_Rest(wp_api.CATEGORIES)
-
-ajax({
-  url: wp_api.CATEGORIES,
-  cbSuccess: (data) =>{
-    console.log(data);
-  }
-})

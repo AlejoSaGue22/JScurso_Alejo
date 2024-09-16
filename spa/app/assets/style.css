@@ -42,9 +42,96 @@ img{
     background-color:crimson;
 }
 
+.form-search {
+    margin: auto;
+    text-align: center;
+}
+
+.form-search input{
+    margin: auto;
+    display: block;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+.grid-fluid{
+    margin: 1rem auto;
+    max-width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.header{
+    padding:  0.5rem;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.header > *{
+    margin: 1rem auto;
+}
+
 .loader{
     margin: 1rem auto;
     display: block;
     width: 4rem;
     height: 4rem;
 }
+
+.post-card {
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 80%;
+    background-color: aliceblue;
+}
+
+.post-card p{
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-page{
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 80%;
+    background-color: #ffffff;
+}
+
+.post-page > aside{
+    margin: auto;
+    width: 60%;
+    text-align: center;
+}
+
+.post-page > hr{
+    border: then solid #ffffff;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+.post-page time{
+    margin: 1rem auto;
+    display: block;
+}
+
+.post-page > article{
+    border: then solid #ffffff;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+.post-page img,
+.post-page audio,
+.post-page iframe,
+.post-page video {
+    margin: auto;
+    display: block;
+    max-width: 100%;
+}
+
+
+
+

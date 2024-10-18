@@ -1,0 +1,18 @@
+@keyframes sube {
+    0% {
+        transform: translateX(50%) translateY(100%);
+    }
+
+    100%{
+        transform: translateX(50%) translateY(0%);
+    }
+}
+
+.increment {
+    width: 600px;
+    height: auto;
+    bottom: 0px;
+    right: 84%;
+    transform: translateX(50%);
+    animation: sube 2s ease-out 1;
+}

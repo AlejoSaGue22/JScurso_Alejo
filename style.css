@@ -16,3 +16,46 @@
     transform: translateX(50%);
     animation: sube 2s ease-out 1;
 }
+
+
+/* Para que los elementos .calendar-wrapper sean responsivos y no se superpongan cuando haces zoom,
+ puedes utilizar CSS con media queries y grid o flexbox. Aquí te dejo un ejemplo utilizando flexbox 
+ para hacer que los elementos se alineen de manera responsiva. */
+.calendars-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.calendar-wrapper {
+    flex: 1 1 30%; /* Se ajustará a un 30% del ancho disponible */
+    min-width: 250px; /* Asegura que las tarjetas no sean demasiado pequeñas */
+    margin-bottom: 2rem; /* Espacio entre cada calendario */
+}
+
+@media screen and (max-width: 768px) {
+    .calendar-wrapper {
+        flex: 1 1 45%; /* Se ajusta a 45% en pantallas más pequeñas */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .calendar-wrapper {
+        flex: 1 1 100%; /* En pantallas muy pequeñas, cada calendario ocupa el 100% */
+    }
+}
+
+
+
+/* BOTONES HOVER COLOR */
+.botonIcono{
+    background-color: #1a2e63;
+    color: #E8EAED;
+    border-radius: 7px;
+}
+
+.botonIcono:hover{
+    background-color: rgb(255, 255, 255);
+    color: #1a2e63;
+}

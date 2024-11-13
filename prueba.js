@@ -1999,6 +1999,22 @@ eventoM.addEventListener("click", (e)=>{
          }
       })
 
+// FORMATEAR NUMERO EN MONEDA CON SIGNO PESO
+      $scope.FormatPesoID = function (NID) {
+        const input = document.getElementById('' + NID + '');
+     
+        var valor = input.value;
+        valor = valor.replace(/[^0-9]/g, ''); 
+        valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, ','); 
+        input.value = `$${valor}`;
+  };
+
+
+
+  //    class="{{repor.DOCUMENTO_ASIGNADO == null ? 'icon-pin' : 'icon-ok-circled2-1'}}"
+  //    ng-class="{'verde':repor.DOCUMENTO_ASIGNADO !== null}" 
+
+
    let arr = [10, 20, 30]
    arr[100] = 40;
 

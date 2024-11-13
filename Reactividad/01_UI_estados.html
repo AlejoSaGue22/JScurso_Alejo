@@ -51,11 +51,11 @@
                     if (!e.target.matches("#todo-form")) return false
                     e.preventDefault();
 
-                const $item = document.getElementById("todo_item")
-                if(!$item) return;
+                    const $item = document.getElementById("todo_item")
+                    if(!$item) return;
 
-                state.todolist.push($item.value)
-                render()
+                    state.todolist.push($item.value)
+                    render()
 
                     $item.value = '';
                     $item.focus();

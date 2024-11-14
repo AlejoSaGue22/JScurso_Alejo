@@ -5,9 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curso de HTML</title> <!-- SOLO PERMITE 55 Y 65 CARACTERES -->
     <meta name="description" content="En esta pagina estamos aprendiendo lo fundamentos de HTML con @jonmircha">
+    <link rel="icon" href="/assets/svgrepo.svg">
+    <link rel="apple-touch-icon" href="favicon.png"> <!-- Icono para los celulares-->
+    <link rel="stylesheet" href="./estilos.css">
+    <link rel="canonical" href="http://tu-dominio.com/la-url-canonica">
+    <meta name="theme-color" content="#ff6600"> <!-- Sirve para cambiar el color en la barra de direccion -->
+
+    <!-- esto sirve cuando se va a compartir un link de una pagina para que aparezca la tarjeta con su descripcion -->
+     <meta property="og-title" content="Aprendiendo HTML">
+     <meta property="og-description" content="En esta pagina estamos aprendiendo los fundamentos de HTML">
+     <meta property="og-url" content="https://tu-dominio.com/img/table-periodic-of-html.png">
+
 </head>
 <body>
+    <h2 id="inicio">Aprendiendo HTML</h2>
     <p>Esta es una prueba de nuestro curso HTML</p>
+    <h3>Temario del Curso</h3>
+    <ul>
+        <li><a href="course.html#encabezados">Encabezados</a></li>
+        <li><a href="course.html#etiquetas_FORMATEO">Etiquetas formateo</a></li>
+        <li><a href="course.html#texto-semantico">Semanticos</a></li>
+        <li><a href="course.html#bloque_linea">Bloques y Lineas</a></li>
+        <li><a href="course.html#estilosCSS">Estilo CSS</a></li>
+        <li><a href="course.html#figuras">Figuras</a></li>
+        <li><a href="course.html#Listas_ordenadas">Listas Ordenadas</a></li>
+        <li><a href="course.html#listas_desordenadas">Listas Desordenadas</a></li>
+        <li><a href="course.html#listas_definicion">Listas de Definicion</a></li>
+        <li><a href="course.html#tablas">Tablas</a></li>
+        <li><a href="course.html#enlaces">Enlaces</a></li>
+        <li><a href="course.html#imagenes">Imagenes</a></li>
+        <li><a href="course.html#elementos_interactivo">Elementos Interactivo</a></li>
+        <li><a href="course.html#audio_video">Audio y Video</a></li>
+        <li><a href="course.html#element_form">Elemento de Formulario</a></li>
+        <li><a href="course.html#metaetiquetas">Meta Etiquetas</a></li>
+    </ul>
+<h2 id="encabezados">ENCABEZADOS</h2>
     <h1>Encabezado N 1 - solo puede existir un solo por documento</h1>
     <h2>Encabezado N 2</h2>
     <h3>Encabezado N 3</h3>
@@ -26,7 +58,7 @@
     <blockquote>Yo solo se, que no se nada Soy una etiqueta blockquote</blockquote>
     <cite>Socrates  soy una etiqueta cite</cite>
     <hr>
-    <h2>ETIQUETAS FORMATEO</h2>
+<h2 id="etiquetas_FORMATEO">ETIQUETAS FORMATEO</h2>
     <pre> <!-- Coloca el texto tal cual como se escribe-->
         - HTML
             - se hjace primera prueba
@@ -56,7 +88,7 @@
     </p>
 
     <hr>
-    <h2>ETIQUETAS SEMANTICAS ESTRUCTURALES</h2>
+    <h2 id="texto-semantico">ETIQUETAS SEMANTICAS ESTRUCTURALES</h2>
         <div>Es una etiqueta contenedora que no tiene semantica</div>
         <header> header - Cabecera de un sitio web o de una seccion</header>
         <main>
@@ -70,5 +102,345 @@
         <aside>aside- un contenido complementario o secundario</aside>
         <section> section - Representa una seccion de contenido generico</section>
         <address> address - Representa una direccion </address>
+        <a href="course.html#inicio">✋</a>
+
+        <hr>
+    <h2 id="bloque_linea">ETIQUETAS DE BLOQUE VS ETIQUETAS DE LINEA</h2>
+        <div style="background-color: yellow;">La etiqueta de bloque por excelencia es la div</div>
+        <span style="background-color: yellow;">La etiqueta de linea por excelencia es la span</span>
+        <span>Soy otra span</span>
+        <hr>
+    <h2 id="estilosCSS">Estilos CSS en HTML</h2>
+        <hr>
+    <h2 id="imagenes">Agregar Imagenes</h2>
+        <img src="/assets/tail-spin.svg" alt="Loader">
+        <hr>
+    <h2 id="figuras">
+        FIGURAS
+    </h2>
+        <figure>
+            <img src="/assets/svgrepo.svg" alt="Code">
+            <figcaption>Codigo cmd y JS</figcaption>
+        </figure>
+        <a href="course.html#inicio">✋</a>
+        <hr>
+    <h2 id="Listas_ordenadas">Listas Ordenados</h2>
+        <h3>Estaciones del año</h3>
+        <ol>
+            <li>primavera</li>
+            <li>Verano</li>
+            <li>otoño</li>
+            <li>invierno</li>
+        </ol>
+
+        <ol start="3">
+            <li>primavera</li>
+            <li>Verano</li>
+            <li>otoño</li>
+            <li>invierno</li>
+        </ol>
+        <ol reversed>
+            <li>primavera</li>
+            <li>Verano</li>
+            <li>otoño</li>
+            <li>invierno</li>
+        </ol>
+
+        <ol type="I">
+            <li>primavera</li>
+            <li>Verano</li>
+            <li>otoño</li>
+            <li>invierno</li>
+        </ol>
+        <ol type="a">
+            <li>primavera</li>
+            <li>Verano</li>
+            <li>otoño</li>
+            <li>invierno</li>
+        </ol>
+        <a href="course.html#inicio">✋</a>
+
+        <hr>
+    <h2 id="listas_desordenadas">Listas desordenadas</h2>
+        <ul type="circle">
+            <li>messi</li>
+            <li>neymar</li>
+            <li>yamal</li>
+            <li>ronaldihno</li>
+        </ul>
+        <ul type="square">
+            <li>messi</li>
+            <li>neymar</li>
+            <li>yamal</li>
+            <li>ronaldihno</li>
+        </ul>
+        <ul>
+            <li>messi</li>
+            <li>neymar</li>
+            <li>yamal</li>
+            <li>ronaldihno</li>
+        </ul>
+        <a href="course.html#inicio">✋</a>
+
+        <hr>
+    <h2 id="listas_definicion">Listas de Definicion</h2>
+        <dl>
+            <dt>HTML</dt>
+            <dd>Es un lenguaje de Marcado de Hipertexto</dd>
+            <dt>CSS</dt>
+            <dd>Es un lenguaje de definicion de estilos</dd>
+            <dt>JavaScript</dt>
+            <dd>Es el lenguaje de la web</dd>
+        </dl>
+        <a href="course.html#inicio">✋</a>
+
+        <hr>
+    <h2 id="tablas">Tablas</h2>
+        <table>
+            <tr>
+                <td>Nombre</td>
+                <td>Constelacion</td>
+                <td>Tipo</td>
+            </tr>
+            <tr>
+                <td>Ikki</td>
+                <td>Fenix</td>
+                <td>Bronce</td>
+            </tr>
+            <tr>
+                <td>Valentina</td>
+                <td>Fuego</td>
+                <td>Oro</td>
+            </tr>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="3">Tabla de los santos de Athena</th>
+                </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Nombre</th>
+                        <th>Nombre</th>
+                    </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ikki</td>
+                    <td>Fenix</td>
+                    <td>Bronce</td>
+                </tr>
+                <tr>
+                    <td>Valentina</td>
+                    <td rowspan="2">Fuego</td>
+                    <td>Oro</td>
+                </tr>
+                <tr>
+                    <td>Alejo</td>
+                   
+                    <td>Esmeralda</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">sen senya</th>
+                </tr>
+            </tfoot>
+        </table>
+        <a href="course.html#inicio">✋</a>
+
+        <hr>
+    <h2 id="enlaces">Enlaces</h2>
+        <a href="https://www.youtube.com/">Ir a Youtube</a><br><br>
+        <a href="https://www.google.com/" target="_blank" rel="nofollow">Ir a google</a><br>
+
+        <a href="malito:alejodejesus2@gmail.com">Enlace a correo electronico</a><br>
+        <a href="tel:573104730088">Enlace a telefono</a><br>
+        <a href="https://api.whatsapp.com/send?phone=573104730088&text=Hola">Enlace hacia Whattsap</a>
+        <br>|+
+
+        <a href="course.html#inicio">✋</a>
+
+        <hr>
+        <h2 id="elementos_interactivo">Elementos Interactivos</h2>
+        <button onclick="alert('Este es un boton')">un Boton</button>
+        <br>
+        <details> <!-- PARA HACER UNA ACORDEON-->
+            <summary>Titulo del Acordion</summary>
+            <article>
+                <h3>Contenido del Acordeon</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis eaque, quam,
+                     repellat optio temporibus exercitationem minus quo dignissimos fuga libero, 
+                     non at numquam provident odio voluptas quae. Illo, tempora voluptatibus.</p>
+
+                     <img src="/assets/svgrepo.svg" alt="code"> 
+            </article>
+        </details>
+        <br>
+        <details open>
+            <summary>Otro details Acordion</summary>
+            <article>
+                <h3>Contenido Para ver</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quis ipsam aut? In nam eius perferendis
+                    fugiat, perspiciatis iure? Cupiditate, labore? Hic adipisci distinctio nam quam voluptas 
+                    perspiciatis atque rem!
+                </p>
+            </article>
+        </details>
+        <br>
+        <dialog open> <!-- Este es un MODAL -->
+            Esto de una ventana HTML
+        </dialog>
+        <a href="course.html#inicio">✋</a>
+
+        <hr>
+        <h2 id="audio_video">AUDIO Y VIDEO</h2>
+        <!-- ATRIBUTOS AUDIO:
+             autoplay: inicia cuando se carga la pagina, 
+             loop: vuelve a repetir el audio, 
+             preload: lo carga la cache antes de iniciar el sitio web para que este listo -->
+        <audio src="/assets/alarma.mp3" controls></audio> 
+        <br>
+        <br>
+
+        <!-- ATRIBUTOS VIDEO: 
+             autoplay: inicia cuando se carga la pagina, 
+             loop: vuelve a repetir el video,
+             poster: para colocar una imagen de portada del video 
+             preload: lo carga la cache antes de iniciar el sitio web para que este listo 
+             muted: que el video inicie con el sonido en silencio
+        -->
+         <video src="/assets/Spring.mp4" poster="/assets/user_test_bg.png" controls></video>
+        <br>
+        <hr>
+        <h2>Iframes</h2>
+        <!-- <iframe src="../Ajax-JS/api-TVshows.html" frameborder="1"></iframe> -->
+        <br><br>
+        <iframe src="../assets/Ley_1437_2011.pdf" frameborder="1"></iframe>
+        <br><br>
+        <iframe src="https://www.facebook.com" frameborder="1"></iframe> <!-- Hay paginas que bloquean este tipo de formas-->
+        <br><br>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7842.635295413192!2d-75.10992731040133!3d10.632412452
+        704044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef67327c36e228b%3A0xf568045627ea47cf!2sArroyo%20Piedras%2C%2
+        0Luruaco%2C%20Atl%C3%A1ntico!5e0!3m2!1ses-419!2sco!4v1731596380031!5m2!1ses-419!2sco" width="600" height="450" 
+        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <br><br>
+        <hr>
+    <h2 id="element_form">Elementos de Formularios</h2>
+        <input type="checkbox">
+        <br><br>
+        <input type="radio">
+        <br><br>
+        <input type="date">
+        <br><br>
+        <input type="color">
+        <br><br>
+        <input type="button" value="boton">
+        <br><br>
+        <input type="submit">
+        <br><br>
+        <input type="reset">
+        <br><br>
+        <input type="text">
+        <br><br>
+        <input type="file">
+        <br><br>
+        <input type="file" multiple> <!-- multiple: sirve para seleccionar varios archivos-->
+        <br><br>
+        <input type="hidden" name="idioma" value="es">
+        <br><br>
+        <input type="email">    
+        <br><br>
+        <input type="number">
+        <br><br>
+        <input type="tel">
+        <br><br>
+        <input type="password">
+        <br><br>
+        <input type="search">
+        <br><br>
+        <textarea cols="50" rows="5"></textarea>
+        <br><br>
+        <select name="" id="">
+            <option value="">Html</option>
+            <option value="">Css</option>
+            <option value="">JS</option>
+        </select>
+        <br><br>
+        <select multiple>
+            <option value="">Html</option>
+            <option value="">Css</option>
+            <option value="">JS</option>
+        </select>
+        <br><br>
+        <input type="text" readonly value="Alejojesus" disabled> 
+        <h3>Formulario de login</h3>
+        <!-- https://www.google.com/?usuario=alejojesus&contrasenia=1234 -->
+        <form action="https://www.google.com" autocomplete="off">
+            <label for="usuario">Usuario</label>
+            <input type="text" name="usuario" id="usuario" required>
+            <br>
+            <label for="password">Contraseña</label>
+            <input type="password" name="contrasenia" id="password" required>
+            <br>
+            <input type="submit">
+            <br>
+            <input type="reset">
+        </form>
+        <h4>Selects, Radios y Checkbox</h4>
+
+        <p>Elige tu idioma</p>
+        <select name="idioma"> <!-- selected: se coloca para que se seleccione uno de las opciones-->
+            <option value="es">Español</option>
+            <option value="mx">mexico</option>
+            <option value="co" selected>Colombia</option>
+        </select>
+        <p>Elige tu lenguaje de programacion favorito</p>
+        <input type="radio" name="lenguaje" id="radio-js" checked required> <!-- checked: es como el selected, que selecciona una de la opciones-->
+        <label for="radio-js">JavaScript</label>
+        <input type="radio" name="lenguaje" id="radio-py">
+        <label for="radio-py">Python</label>
+        <input type="radio" name="lenguaje" id="radio-php">
+        <label for="radio-php">PHP</label>
+        <br><br>
+        <p>Elige tus intereses</p>
+        <label> 
+            <input type="checkbox" name="barc" value="Barcelona" checked>
+            Barcelona
+        </label>
+        <label> 
+            <input type="checkbox" name="barc" value="Real Madrid">
+            Real Madrid
+        </label>
+        <label> 
+            <input type="checkbox" name="barc" value="Junior" checked>
+            Junior
+        </label>
+        <label> 
+            <input type="checkbox" name="barc" value="Liverpool">
+            Liverpool
+        </label>
+        <hr>
+        <h2>Data Attribute</h2>
+        <ul>
+            <li data-id="1" data-name="e">Primavera</li>
+            <li>Otoño</li>
+            <li>Verano</li>
+        </ul>
+        <hr>
+    <h2 id="metaetiquetas">MetaEtiquetas para SEO (Ayudan al posicionamiendo de google)</h2>
+    <br><br>
+    <hr>
+ <h2 id="accesibilidad">Accesibilidad Web</h2>
+ <h3 role="title">Las estaciones del año</h3>
+ <ul role="list">
+    <li role="listitem">Primavera</li>
+    <li role="listitem">Otoño</li>
+    <li role="listitem">Verano</li>
+</ul>
+<a href="#" target="_blank" role="link" aria-label="En este enlace encontraras mas informacion sobre estaciones del año">Mas Informacion</a>
+        <script src="/aritmetica.js"></script>
 </body>
 </html>

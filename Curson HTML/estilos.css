@@ -1,0 +1,12 @@
+img, video{
+    max-width: 70%;
+    height: auto;
+}
+
+h2{
+    color: brown;
+}
+
+html{
+    scroll-behavior: smooth;
+}

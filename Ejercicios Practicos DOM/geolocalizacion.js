@@ -24,7 +24,6 @@ export default function ObtenerGeolocolizacion(id){
                 $div22.innerHTML = `<p><mark>Error ${err.code}: ${err.message}</mark></p>`
                 console.log(`Error ${err.code}: ${err.message}`);
             }
-
-
+            
             navigator.geolocation.getCurrentPosition(success, error, options);
 } 

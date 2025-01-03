@@ -23,6 +23,7 @@ setTimeout(() => {
 //  npm install fs path
 const fs = require('fs');
 const path = require('path');
+const { duplexPair } = require('stream');
 
 const directoryPath = './pdfs'; // Cambia esta ruta a la ruta de tu carpeta con PDFs
 
@@ -48,7 +49,7 @@ function moveFile(filePath, destDir) {
     fs.rename(filePath, destPath, err => {
         if (err) {
             console.log('Error moving file:', err);
-        } else {
+        } else { 
             console.log(`Moved file ${filePath} to ${destDir}`);
         }
     });
@@ -60,7 +61,7 @@ fs.readdir(directoryPath, (err, files) => {
         return console.log('Unable to scan directory: ' + err);
     }
     const pdfFiles = files.filter(file => path.extname(file) === '.pdf');
-
+    
     // Agrupar archivos por patrón
     pdfFiles.forEach(file => {
         const pattern = extractPattern(file);

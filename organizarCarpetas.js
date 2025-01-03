@@ -23,7 +23,6 @@ function getDirectorySize(dirPath) {
             totalSize += getDirectorySize(filePath); // Recursivamente sumar tamaños de subdirectorios
         }
     });
-
     return totalSize;
 }
 

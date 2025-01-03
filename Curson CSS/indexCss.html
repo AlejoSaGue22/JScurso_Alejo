@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curson CSS</title>
+    <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+    <h1>Aprendiendo CSS</h1>
+    <p><i>Cascading Style Sheets</i></p>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Sirve para cambiar el color en la barra de direccion -->
+
+    <!-- esto sirve cuando se va a compartir un link de una pagina para que aparezca la tarjeta con su descripcion -->
+     <meta property="og-title" content="Aprendiendo HTML">
+     <meta property="og-description" content="En esta pagina estamos aprendiendo los fundamentos de HTML">
+     <meta property="og-url" content="https://tu-dominio.com/img/table-periodic-of-html.png">
+
+</head>
+<body>
+    <article id="temario-css">
+        <h2 id="inicio">Aprendiendo HTML</h2>
+        <p>Esta es una prueba de nuestro curso HTML</p>
+        <h3>Temario del Curso</h3>
+        <ul>
+            <li><a href="indexCss.html#SelectoresBasicas">Selectores Basicas</a></li>
+            <li><a href="indexCss.html#SelectoresAvanzados">Selectores Avanzados</a></li>
+            <li><a href="indexCss.html#bloque_linea">Bloques y Lineas</a></li>
+            <li><a href="indexCss.html#estilosCSS">PSEUDO CLASES</a></li>
+            <li><a href="indexCss.html#imagenes">PSEUDO ELEMENTOS</a></li>
+            <li><a href="indexCss.html#figuras">AGRUPAR SELECTORES</a></li>
+            <li><a href="indexCss.html#listas_desordenadas">ALGORITMO DE CSS</a></li>
+            <li><a href="indexCss.html#listas_definicion">Listas de Definicion</a></li>
+            <li><a href="indexCss.html#tablas">Tablas</a></li>
+            <li><a href="indexCss.html#enlaces">Enlaces</a></li>
+            <li><a href="indexCss.html#elementos_interactivo">Elementos Interactivo</a></li>
+            <li><a href="indexCss.html#audio_video">Audio y Video</a></li>
+            <li><a href="indexCss.html#element_form">Elemento de Formulario</a></li>
+            <li><a href="indexCss.html#metaetiquetas">Meta Etiquetas</a></li>
+        </ul>
+    </article>
+
+    <article id="SelectoresBasicas">
+        <h2 >SELECTORES BASICAS</h2>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+            Tempora, pariatur aut debitis nisi dolorum ea voluptatem perferendis maiores facere voluptatum nihil 
+            laborum reiciendis ut consequatur veniam, saepe, repellendus sapiente. Deleniti!
+        </p>
+        <p id="parrafo-dos">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+            Tempora, pariatur aut debitis nisi dolorum ea voluptatem perferendis maiores facere voluptatum nihil 
+            laborum reiciendis ut consequatur veniam, saepe, repellendus sapiente. Deleniti!
+        </p>
+        <p id="texto-32">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+            Tempora, pariatur aut debitis nisi dolorum ea voluptatem perferendis maiores facere voluptatum nihil 
+            laborum reiciendis ut consequatur veniam, saepe, repellendus sapiente. Deleniti!
+        </p>
+        <hr>
+        <h2 id="SelectoresAvanzados">SELECTORES AVANZADOS</h2>
+        <h3>Selectores de hijos</h3>
+        <h4>Selector de hijos directos</h4>
+        <ul class="hijos-directos">
+            <li><b>Primavera</b></li>
+            <li><b>Verano</b></li>
+            <li><b>Otoño</b></li>
+            <li><b>invierno</b></li>
+        </ul>
+        
+        <h4>Selector de hijos descendientes</h4>
+        <ul class="hijos-descendientes">
+            <li><b>Primavera <i> <u>s<sub>2</sub>o</u></i></b></li>
+            <li><b>Verano</b></li>
+            <li><b>Otoño</b></li>
+            <li><b>invierno</b></li>
+        </ul>
+    
+        <h3>Selectores de hermanos</h3>
+        <h4>Selector de hermanos (en general)</h4>
+        <ul>
+            <li><b>Primavera</b></li>
+            <li class="hermanos-general"><b>Verano</b></li>
+            <li><b>Otoño</b></li>
+            <li><b>invierno</b></li>
+        </ul>
+    
+        <h4>Selector de hermanos (adyacente)</h4>
+        <ul>
+            <li><b>Primavera</b></li>
+            <li class="hermanos-adyacente"><b>Verano</b></li>
+            <li><b>Otoño</b></li>
+            <li><b>invierno</b></li>
+        </ul>
+    
+        <h3>Selectores de atributos</h3>
+        <nav class="selectores-atributos">
+            <ul>
+                <li><a href="indexCss.html#inicio">Regresar</a></li>
+                <li><a href="https://google.com" target="_blank">Inicio</a></li>
+                <li><a class="menu-item cursos button" href="https://jonmircha.com/cursos" target="_blank">Cursos</a></li>
+                <li><a href="https://jonmircha.com/blog" target="_blank">Blog</a></li>
+                <li><a href="https://jonmircha.com/cv" target="_blank">CV</a></li>
+                <li><a href="https://jonmircha.com/ahora" target="_blank">Ahora</a></li>
+                <li><a href="https://jonmircha.com/notas" target="_blank">Notas</a></li>
+            </ul>
+        </nav>
+    
+            <a href="indexCss.html#inicio">✋</a>
+            <hr>
+        <h3 id="bloque_linea">SELECTOR UNIVERSAL (*)</h3>
+            <ul class="selector-universal">
+                <li><b>Primavera</b></li>
+                <li><b>Verano</b></li>
+                <li><b>Otoño</b></li>
+                <li><b>invierno</b></li>
+            </ul>
+    </article>
+    <hr>
+
+    <article id="estilosCSS">
+        <h2>PSEUDO CLASES</h2>
+        <form class="form-pseudoclases">
+            <input type="text" name="nombre" placeholder="Escribe tu nombre" required>
+            <br>
+            <input type="email" name="correo" placeholder="Escribe tu correo" required>
+            <br>
+            <input type="submit">
+        </form>
+
+        <nav class="menu-pseudoclases">
+            <a href="">Seccion 1</a>
+            <a href="">Seccion 2</a>
+            <a href="">Seccion 3</a>
+        </nav>
+
+        <ol class="lista-pseudoclase">
+            <!-- <i>Prueba</i> -->
+            <li>Barcelona</li>
+            <li>Real Madrid</li>
+            <li>Junior</li>
+            <li>Colombia</li>
+            <li>Manchester City</li>
+            <li>Liverpool</li>
+            <li>Arsenal</li>
+            <li>PSG</li>
+            <li>Monaco</li>
+            <li>Lille</li>
+            <li>Juventus</li>
+            <li>Milan</li>
+        </ol>
+        
+        <article class="articulo-pseudoclases">
+                <header>Este es la cabecera</header>
+                <p>Este es un parrafo</p>
+                <div>Este es un div</div>
+                <p>este es otro parrafo incluido</p>
+                <section>Esta es una section</section>
+                <div>este otro pa div</div>
+                <p>otra parrafo mas agregado</p>
+        </article>
+        <a href="indexCss.html#temario-css">✋</a>
+    </article>
+    
+        <hr>
+        <article id="imagenes">
+            <h2>PSEUDO ELEMENTOS</h2>
+                <img src="/assets/tail-spin.svg" alt="Loader">
+            <p>
+                <i>Bandai Myth Cloth</i> <span class="saga-gemini">Saga de Gemini</span> 
+                <span class="saga-precio">500</span>
+            </p>
+
+            <p class="p-pseudoelementos">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit, 
+                nesciunt officia nam ipsum iure labore tempora, eius assumenda 
+                placeat quisquam quod? Tenetur dolor repellat illo consequatur!
+                Enim ratione quasi est.
+            </p>
+
+            <input class="input-pseudoelemento" type="text" name="nose" placeholder="Escribe tu Nombre">
+            <a href="indexCss.html#temario-css">✋</a>
+        </article>
+
+        <hr>
+        <article>
+            <h2 id="figuras">AGRUPAR SELECTORES </h2>
+                <form class="agrupar-selector">
+                    <input type="text" name="nombre" placeholder="Escribe tu nombre">
+                    <input type="email" name="correo" placeholder="Escribe tu correo">
+                    <textarea name="comentarios" cols="30" rows="10"></textarea>
+                    <input type="submit">
+                </form>
+                <a href="indexCss.html#inicio">✋</a>
+        </article>
+        <hr>
+        <article>
+            <h2 id="listas_desordenadas">ALGORITMO DE CSS</h2>
+                <ul>
+                    <li>La Cascada</li>
+                    <li>La Especificidad</li>
+                    <li>La Herencia</li>
+                </ul>
+
+                <blockquote class="cita-marco" id="cita-marco">Aqui se esta probando la cascada y la Especificidad
+                    <cite>Tejo Sangue</cite>
+                </blockquote>
+                <a href="indexCss.html#temario-css">✋</a>
+        </article>
+
+        <hr>
+    <h2 id="listas_definicion">Listas de Definicion</h2>
+        
+        <a href="indexCss.html#temario-css">✋</a>
+        <hr>
+    <h2 id="tablas">Tablas</h2>
+    
+        <a href="indexCss.html#temario-css">✋</a>
+        <hr>
+    <h2 id="enlaces">Enlaces</h2>
+       
+
+        <hr>
+        <script src="/aritmetica.js"></script>
+</body>
+</html>
+</body>
+</html>

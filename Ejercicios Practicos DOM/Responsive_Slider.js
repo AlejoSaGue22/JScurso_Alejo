@@ -34,7 +34,7 @@ export default function Slider(prev, next){
                         posicionA = 0;
                         $slide[posicionA].classList.add("active");
                     }else{
-                        posicionA++ 
+                        posicionA++;
                         $slide[posicionA].classList.add("active");
                     }
                 }

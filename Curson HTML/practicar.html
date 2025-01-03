@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practicando con HTML</title>
+    <link rel="icon" href="../assets/user_test_bg.png">
+    
+    <style>
+        table, th, tr, td{
+            border: thick solid black;
+            padding: 4px;
+        }
+
+        html{
+            scroll-behavior: smooth;
+        }
+        .progress-container {
+  width: 100%;
+  height: 20px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 5px;
+}
+
+.progress-bar {
+  /* ... otros estilos ... */
+  animation: progress 2s linear forwards;
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+    </style>
+</head>
+<body>
+    <h2>Articulo de verificacion de Modulos de Genesis</h2>
+    <ul>
+        <li><a href="">Items 1</a></li>
+        <li><a href="">Items 2</a></li>
+        <li><a href="">Items 3</a></li>
+    </ul>
+    <ol>
+        <li><a href="">Items 1</a></li>
+        <li><a href="">Items 2</a></li>
+        <li><a href="">Items 3</a></li>
+    </ol>
+    <h1>Solo debe haber un h1</h1>
+    <h6>Has aqui se permite con h7</h6>
+    <h7>el navegador no lo reconoce, y aplica ningun estilo a la etiqueta</h7>
+    <section>
+        <ol>
+            <li><b>Esta es una negrita</b></li>
+            <li><mark>Esta es una markado amarillo</mark></li>
+            <li><i>esta es una letra Italica</i></li>
+            <li><u>creo que es subrayado</u></li>
+            <li>este es un texto<sup>elevado</sup></li>
+            <li>este es un texto<sub>debajo</sub></li>
+            <li>este son las palabras <small>pequeñas</small></li>
+            <li><strong>esta es un texto importante</strong></li>
+            <li><em>esta etiqueta hace segun un enfasis</em></li>
+            <li><blockquote>Esta es una etiqueta blockquote</blockquote></li>
+            <li><cite>esta es una cita</cite></li>
+            <li>
+                <pre>
+                esta es una etiqueta donde se entiende tal cual como se escribe, no tiene ninguna modificacion
+                ni estilo en el DOM.
+
+                    $ PRUEBA %
+                    $ prueba 2 %
+                    $ prueba 4 %
+                </pre>
+            </li>
+            <li>
+                <code>
+                    esta etiqueta solo cambia la fuente de la letra a monospace, tipo codigo de programacion
+                </code>
+            </li>
+        </ol>
+        <pre>
+            <code>
+                function moveFile(filePath, destDir) {
+                    const destPath = path.join(destDir, path.basename(filePath));
+                        fs.copyFile(filePath, destPath, function (err) {
+                            if (err) throw err
+                            // console.log('Exitoso el archivo fue movido')
+                            });
+                    }
+                    &lt;Title&geqslant;
+            </code>
+        </pre>
+        
+        <h1>Este es un h1 de text</h1>
+    </section>
+    <header> header - Cabecera de un sitio web o de una seccion</header>
+    <main>
+        main - Defina la seccion principal del documento, solo puede existir un solo por documento
+    </main>
+    <nav>nav- representa una navegacion</nav>
+    <aside>aside- un contenido complementario o secundario</aside>
+    <section> section - Representa una seccion de contenido generico</section>
+    <address> address - Representa una direccion </address>
+    <article>
+        article - Representa un seccion autocontenido (que por si sola se explica)
+    </article>
+
+    <hr>
+    <h2>OTRAS ETIQUETAS</h2>
+    <div style="background-color: yellow;">La etiqueta de bloque por excelencia es la div</div>
+        <span style="background-color: yellow;">La etiqueta de linea por excelencia es la span</span>
+        <span>Soy otra span</span>
+        
+
+
+        <ol>
+            <li>primavera</li>
+            <li>Verano</li>
+            <li>otoño</li>
+            <li>invierno</li>
+        </ol>
+        <ol reversed>
+            <li>primavera</li>
+            <li>primavera</li>
+            <li>primavera</li>
+        </ol>
+        <ol start="5">
+            <li>primavera</li>
+            <li>primavera</li>
+            <li>primavera</li>
+        </ol>
+        <ol type="I">
+            <li>primavera</li>
+            <li>Verano</li>
+            <li>otoño</li>
+            <li>invierno</li>
+        </ol>
+        <ol type="a">
+            <li>primavera</li>
+            <li>Verano</li>
+            <li>otoño</li>
+            <li>invierno</li>
+        </ol>
+        <ol type="a">
+            <li>primavera</li>
+            <li>Verano</li>
+            <li>otoño</li>
+            <li>invierno</li>
+        </ol>
+        <ol type="a">
+            <li>primavera</li>
+            <li>Verano</li>
+            <li>otoño</li>
+            <li>invierno</li>
+        </ol>
+        <ul type="circle">
+            <li>messi</li>
+            <li>neymar</li>
+            <li>yamal</li>
+            <li>ronaldihno</li>
+        </ul>
+
+        
+        <dl>
+            <dt>HTML</dt>
+            <dd>Es un lenguaje de Marcado de Hipertexto</dd>
+            <dt>CSS</dt>
+            <dd>Es un lenguaje de definicion de estilos</dd>
+            <dt>JAVASCRIPT</dt>
+            <dd>Es el lenguaje de la web</dd>
+        </dl>
+        
+        <div>
+            <dt>NODE JS</dt>
+            <dd>Este es un entorno de ejecucion del lado del servidor donde se maneja el lenguaje JS</dd>
+            <dt>PYTHON</dt>
+            <dd>Este es un lenguaje de programacion</dd>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="3"> Los mejores futbolista de la historia</th>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Club</th>
+                    <th>Nacionalidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Neymar JR.</td>
+                    <td rowspan="2">Barcelona</td>
+                    <td>Brasil</td>
+                </tr>
+                <tr>
+                    <td>Lionel Messi</td>
+                    <td>Argentina</td>
+                </tr>
+                <tr>
+                    <td>Cristiano Ronaldo</td>
+                    <td>Real Madrid</td>
+                    <td>Portugal</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">Mejores jugadores de fuchebol</th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <hr>
+        <h2 id="enlaces">Enlaces</h2>
+            <a href="https://www.youtube.com/">Ir a Youtube</a><br><br>
+            <a href="https://www.google.com/" target="_blank" rel="nofollow">Ir a google</a><br> 
+            <!--rel="nofollow" : usa este atributo cuando quieras incluir un enlace a una página, pero no quieras
+             tener ningún tipo de asociación con esa página (por ejemplo, si no quieres contribuir a que mejore su posicionamiento).-->
+
+            <details open>
+                <summary>Esta es una acordeon</summary>
+                <article>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Molestias mollitia obcaecati saepe distinctio ex facere necessitatibus
+                    facilis in temporibus nam ea odio cum quo incidunt fugit, maxime voluptas
+                    repudiandae ab.
+                </article>
+            </details>
+
+            <audio src="../assets/alarma.mp3" controls loop muted></audio>
+            <video src="../assets/Spring.mp4" poster="../assets/user_test_bg.png" controls muted preload="auto"></video><br>
+            <dialog>
+                    <article>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestias mollitia obcaecati saepe distinctio ex facere necessitatibus
+                        facilis in temporibus nam ea odio cum quo incidunt fugit, maxime voluptas
+                        repudiandae ab.
+                    </article>
+            </dialog>
+
+            <iframe src="../assets/Ley_1437_2011.pdf" frameborder="1"></iframe>
+
+
+        
+
+
+</body>
+</html>

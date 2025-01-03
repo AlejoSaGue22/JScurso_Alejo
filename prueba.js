@@ -1215,6 +1215,8 @@
 
 // // // // // // console.log(set.has("hola"));
 
+
+
                                                     // // // // // // // Maps ------------------------------
 
 // // // // // // const mapa = new Map();
@@ -2000,20 +2002,39 @@ eventoM.addEventListener("click", (e)=>{
       })
 
 // FORMATEAR NUMERO EN MONEDA CON SIGNO PESO
-      $scope.FormatPesoID = function (NID) {
-        const input = document.getElementById('' + NID + '');
+  //     $scope.FormatPesoID = function (NID) {
+  //       const input = document.getElementById('' + NID + '');
      
-        var valor = input.value;
-        valor = valor.replace(/[^0-9]/g, ''); 
-        valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, ','); 
-        input.value = `$${valor}`;
-  };
+  //       var valor = input.value;
+  //       valor = valor.replace(/[^0-9]/g, ''); 
+  //       valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, ','); 
+  //       input.value = `$${valor}`;
+  // };
 
 
+  // CREAR AÑOS RECURSIVOS
+      // $scope.Anios = [];
+      // for (let i = 2022; i <= $scope.SysDay.getFullYear(); i++) {
+      //     $scope.Anios.push({ "Codigo": i, "Nombre": i })
+      // }
 
-  //    class="{{repor.DOCUMENTO_ASIGNADO == null ? 'icon-pin' : 'icon-ok-circled2-1'}}"
-  //    ng-class="{'verde':repor.DOCUMENTO_ASIGNADO !== null}" 
 
+  // class="{{repor.DOCUMENTO_ASIGNADO == null ? 'icon-pin' : 'icon-ok-circled2-1'}}"
+  // ng-class="{'verde':repor.DOCUMENTO_ASIGNADO !== null}" 
+
+      // Fecha de inicio (puedes poner la fecha que desees)
+    let fechaInicio = new Date('2025-01-01'); // ejemplo: 1 de enero de 2025
+
+    // Fecha actual
+    let fechaHoy = new Date();
+
+    // Calcular la diferencia en milisegundos
+    let diferenciaMs = fechaHoy - fechaInicio;
+
+    // Convertir la diferencia de milisegundos a días
+    let diferenciaDias = Math.floor(diferenciaMs / (1000 * 60 * 60 * 24));
+
+    console.log('Días entre la fecha y hoy:', diferenciaDias);
 
    let arr = [10, 20, 30]
    arr[100] = 40;
@@ -2021,8 +2042,23 @@ eventoM.addEventListener("click", (e)=>{
    console.log(arr.length + ' Prueba');
    console.log(arr);
 
+   ptuba()
 
-    
+  function ptuba(parametros){
+    console.log("prueba", parametros);
+  }
+
+   (function name(params) {
+        print("se ejecuta solo")
+   })();
+
+  //  otraprueba();
+
+  //  const otraprueba = () =>{
+  //     console.log("Esta es una funcion expresada");
+  //  }
+
+  
 
     
       

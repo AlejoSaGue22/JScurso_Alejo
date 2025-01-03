@@ -1,0 +1,267 @@
+/* Regla css consta de dos partes */
+/* Here begins the CSS course */
+
+@import url("./otroCSS.css"); /* Son mala practicas por que son bloqueantes a la hora de que el navegador lee esta instruccion*/
+
+/* 
+    ------------------------SELECTORIES BASICOS------------------------
+*/
+html{
+    scroll-behavior: smooth;
+}
+
+.hijos-directos > li{
+    background-color: tomato;
+}
+
+#SelectoresAvanzados ~ h3{
+    background-color: burlywood;
+}
+
+.hijos-descendientes b { /* Selectores de Hijos: espacio (Puede selecionar cualquier etiqueta que este dentro de ella) */
+    background-color: blueviolet;
+}
+
+.hermanos-general ~ li { /* Selectores de hermanos general: ~ (Puede selecionar los elementos que sean hermanos y que esten debajo) */
+    background-color: blueviolet;
+}
+
+.hermanos-adyacente + li { /* Selector de hermanos siguiente Adyacente: ~ (Puede selecionar solo el elemento hermano que esta debajo) */
+    background-color: blueviolet;
+}
+
+/*------------------------ SELECTORES DE ATRIBUTOS ------------------------*/
+.selectores-atributos a[href]{  /* Este indica todo las etiquetas a con atributo href dentro del selector colocado */
+    color: orange;
+}
+
+.selectores-atributos a[target='_blank']{
+    font-weight: bold;
+}
+
+.selectores-atributos a[href*='jonmircha']{ /* El * aplica el estilo si contiene la palabra colocada (como un include en js) */
+    font-size: 24px;
+}
+
+.selectores-atributos a[href^='indexCss']{ /* El ^ aplica el estilo si inicia desde el principio con la palabra colocada */
+    text-decoration: none;
+}
+
+.selectores-atributos a[href$='com']{ /* El $ aplica el estilo si finaliza con la palabra colocada */
+    background-color: chartreuse;
+}
+
+.selectores-atributos a[class~='cursos']{ /* El ~ aplica el estilo a un texto que este en una lista separada por espacio */
+    background-color: chartreuse;
+}
+
+.selectores-atributos a[class|='menu']{ /* El | aplica el estilo a un texto que este en una lista separada por espacio que despues de ese texto venga un guion medio - */
+    background-color: rgb(157, 126, 126);
+}
+
+#imagenes + img[alt^='Lo']{
+    box-shadow: inset;
+    background-color: rgb(7, 190, 29);
+}
+
+/*------------------------ SELECTOR UNIVERSAL------------------------ */
+
+*{  /* Este selector selecciona todas las etiquietas html */
+    font-family: sans-serif;  
+}
+
+.selector-universal * {
+    font-size: 25px;
+}
+
+/* ------------------------PSEUDOCLASES EN CSS------------------------ */
+.form-pseudoclases *:required{
+    border-color: yellow;
+}
+
+.form-pseudoclases *:valid{
+    border-color: green;
+}
+
+.form-pseudoclases *:invalid{
+    border-color: red;
+}
+
+.form-pseudoclases *:focus{
+    background-color: rgb(104, 21, 168);
+}
+
+.form-pseudoclases *:disabled{
+    background-color: rgb(65, 66, 60);
+}
+
+.menu-pseudoclases *:visited{   /* cuando un etiqueta de enlace 'a', ya ha sido visitada o seleccionada */
+    color: rgb(37, 202, 22);
+} 
+
+.menu-pseudoclases *:hover{
+    color: yellow;
+}
+
+#temario-css:target{  /* Se activa cuando el id esta en la url del sitio  */
+    background-color: lightgreen;
+}
+
+.lista-pseudoclase li:first-child{ /* Primera etiqueta li  */
+    color: rgb(207, 64, 25);
+}
+
+.lista-pseudoclase li:last-child{  /* Ultima etiqueta li  */
+    color: rgb(207, 25, 201);
+}
+
+.lista-pseudoclase li:nth-child(3) {  /* Puedes seleccionar el numero exacto de etiqueta li  */
+    color: navy
+}
+
+.lista-pseudoclase li:nth-child(4n){  /* con la n al lado va en secuencia con etiqueta seleccionada Ej: en este que se hizo va de 4 en 4  */
+    font-size: 25px;
+}
+
+.lista-pseudoclase li:nth-child(3n + 1){  /* con la n al lado va en secuencia con etiqueta seleccionada Ej: en este que se hizo va de 4 en 4  */
+    font-weight: bold;
+}
+
+.lista-pseudoclase li:nth-child(even){  /* con even selecciona las etiquetas que sean pares*/
+    background-color: burlywood;
+}
+
+.lista-pseudoclase li:nth-child(odd){  /* con even selecciona las etiquetas que sean inpares*/
+    background-color:turquoise
+}
+
+.articulo-pseudoclases p:first-of-type{
+    background-color: red;
+    box-shadow: 2rem;
+}
+
+.articulo-pseudoclases p:last-of-type{
+    background-color: red;
+    box-shadow: 2rem;
+}
+
+.articulo-pseudoclases p:nth-of-type(2){
+    background-color: brown;
+}
+
+.articulo-pseudoclases *:not(p, .bottom, .list, #prueba){  
+    background-color: rgb(226, 198, 173);
+}
+
+/* ------------ PSEUDO ELEMENTOS ----------------- */
+
+.saga-gemini::before{ /* Antes de la etiqueta seleccionada*/
+    content: '🐱‍🏍';
+}
+
+.saga-gemini::after{ /* Despues de la etiqueta seleccionada*/
+    content: '🤳';
+}
+
+.saga-precio::before{
+    content: '$';
+    font-weight: bold;
+}
+
+.saga-precio::after{
+    content: 'USD';
+    font-weight: bold;
+}
+
+.p-pseudoelementos::first-letter{  /* Primera letra del texto de la etiqueta */
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.p-pseudoelementos::first-line{  /* Primera linea del texto de la etiqueta */
+    color: tomato; 
+}
+
+.p-pseudoelementos::selection{  /* Cuando se da un click presionado con el mouse en un texto sale marcado de azul  */
+    color: rgb(252, 255, 71); 
+    background-color: black;
+}
+
+.input-pseudoelemento::placeholder{ /* Para modificar el placeholder de un input*/
+    color: aquamarine;
+}
+
+/* ------------------------ AGRUPAR SELECTORES ------------------------*/
+.agrupar-selector input[type='text'],
+.agrupar-selector input[type='email'],
+.agrupar-selector textarea {
+    border-color: yellow;
+    background-color: black;
+    font-size: 20px;
+    display: block;
+    border-width: 2px;
+    border-style: dashed;
+}
+
+/* 
+El Algoritmo de CSS: Es la forma en que el navegador aplica los estilos al documento HTML. Es vital entender este concepto para que entiendas 
+                     como se aplican y en algunas ocasiones se sobreescriben las reglas CSS.
+  1) La Cascada.
+  2) La Especificidad.
+  3) La Herencia.
+
+La Cascada es el mecanismo en que el navegador aplica los estilos. Y toma en cuenta lo siguiente en este orden:
+  1) El Origen del Código:
+    - El User Agent (los estilos por defecto del navegador)
+    - Personalizaciones del usuario.
+    - Los estilos del autor.
+  2) La Especificidad del Selector
+  3) Orden de Aparición
+
+La Especificidad es el peso que tiene un selector cuando hay conflicto de estilos. Se calcula de la siguiente forma:
+  Etiquetas y pseudoelementos -------------- 0,0,0,1
+  Clases, atributos y pseudoclases ------------0,0,1,0
+  Identificadores -------------------------------0,1,0,0
+  Estilos en línea--------------------------------1,0,0,0
+  !important ------------------Rompe la especificidad
+
+La Herencia, es la capacidad de un selector de obtener (heredar) los valores de sus ancestros más cercanos, para aplicarla se usa el valor inherit,
+ si queremos evitarla podemos asignar otro valor o inicializar la propiedad en cuestión con el valor initial
+
+https://web.dev/learn/css/inheritance/#which-properties-are-inheritable
+
+*/
+
+blockquote{
+    background-color: burlywood;
+}
+
+#cita-marco{
+    background-color: lightgreen;
+}
+
+blockquote.cita-marco{  /* Este es el que queda porque la especifidad es mayor que los demas (El tipo de selector lo prioriza) */
+    background-color: tomato;
+}
+
+.cita-marco{
+    background-color: cornflowerblue;
+}
+
+.cita-marco{
+    background-color: goldenrod !important;
+}
+
+blockquote#cita-marco{ /* Este es el que queda porque la especifidad es mayor que los demas (El tipo de selector lo prioriza) */
+    background-color: lightsalmon;
+}
+
+.cita-marco{
+    background-color: rgb(255, 241, 51) !important;
+}
+
+
+
+
+
+

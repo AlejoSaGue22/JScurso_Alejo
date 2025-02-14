@@ -55,8 +55,8 @@ function moveFile(filePath, destDir) {
     });
 }
 
-// Leer la carpeta
-fs.readdir(directoryPath, (err, files) => {
+    // Leer la carpeta
+    fs.readdir(directoryPath, (err, files) => {
     if (err) {
         return console.log('Unable to scan directory: ' + err);
     }

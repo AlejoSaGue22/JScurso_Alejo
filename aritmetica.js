@@ -11,11 +11,22 @@
 //         restar
 //     }
 
-    console.log(document.getElementsByName('barc').value);
+    console.log(document.getElementsByName('barc').value, 99);
 
     document.addEventListener("change", e => {
         console.log(e.target);
         console.log(e.target.value);
         
     })
+
+    let cek = document.querySelectorAll(".check");
+
+    cek.forEach(checkbox => {
+        console.log(checkbox);
+        
+        checkbox.addEventListener("change", e => {
+            console.log(e.target.checked);
+        })
+    })
+
     

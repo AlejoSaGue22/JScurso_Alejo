@@ -89,7 +89,7 @@
 
                         if (xhr.status >= 200 && xhr.status < 300) {
                           let json = JSON.parse(xhr.responseText)
-                           console.log(json);
+                          console.log(json);
                         }else{
                           let mensaje = xhr.statusText || "Ocurrio un error"
                            console.log(xhr.statusText)
@@ -122,7 +122,7 @@
 
                 file_Reader.addEventListener("loadend", e => { 
                   uploader(elem);
-                  setTimeout(()=>{
+                  setTimeout(() =>{
                     main.removeChild(progress);
                     main.removeChild(span);
                   },3000)

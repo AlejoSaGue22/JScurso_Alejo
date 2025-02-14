@@ -239,7 +239,7 @@
 
             <audio src="../assets/alarma.mp3" controls loop muted></audio>
             <video src="../assets/Spring.mp4" poster="../assets/user_test_bg.png" controls muted preload="auto"></video><br>
-            <dialog>
+            <dialog open>
                     <article>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Molestias mollitia obcaecati saepe distinctio ex facere necessitatibus
@@ -249,10 +249,50 @@
             </dialog>
 
             <iframe src="../assets/Ley_1437_2011.pdf" frameborder="1"></iframe>
+            <br><br><br>
 
-
+            <form>
+                <input type="text" name="texto" id="textonuevo" placeholder="Escribe tu nombre" required>
+                <input type="date" name="fecha" id="fechainicio" required>
+                <input type="password" name="contrasenia" id="contrasenia" placeholder="Contraseniaa" required>
+                <input type="email" name="contrasenia" id="email" placeholder="Escribe tu email" required>
+                <select>
+                    <optgroup label="Web">
+                        <option value="">Html</option>
+                        <option value="">Css</option>
+                        <option value="">JS</option>
+                    </optgroup>
+                    <optgroup label="Escritorio">
+                        <option value="">.Net</option>
+                        <option value="">Java</option>
+                    </optgroup>
+                </select>
+                <br>
+                <input type="radio" name="practicar" id="masculino" value="masculino">
+                <label for="masculino">Sexo</label>
+                <input type="radio" name="practicar" id="Amor" value="Amor">
+                <label for="Amor">Amor</label>
+                <input type="radio" name="practicar" id="culeo" value="culeo">
+                <label for="culeo">culeo</label>
+                <br><br>
+                <input type="reset" value="resetar">
+                <input type="submit" value="enviar">
+            </form>
+            <br><br><br>
+            <p>Elige el checkbox</p>
+            <label for="barcelona">Barcelona</label>
+            <input type="checkbox" class="check" name="probar" id="barcelona">
+            <label for="amor">Amor</label>
+            <input type="checkbox" class="check" name="probar" id="amor">
+            <br><br><br><br><br><br>
+            <ul role="list">
+                <li role="listitem">Primavera</li>
+                <li role="listitem">Otoño</li>
+                <li role="listitem">Verano</li>
+            </ul>
         
 
+            <script src="/aritmetica.js"></script>
 
 </body>
 </html>

@@ -90,7 +90,8 @@ Posicionamiento CSS
   left: -30px;
 }
 
-/* fixed: El elemento pierde sus dimensiones y posición original en el flujo del documento. Si se mueve toma como referencia el documento HTML y queda fijo en la posición, cuando el scroll se mueva, el elemento no lo hará, queda FIJO */
+/* fixed: El elemento pierde sus dimensiones y posición original en el flujo del documento. Si se mueve toma como referencia el documento HTML y
+ queda fijo en la posición, cuando el scroll se mueva, el elemento no lo hará, queda FIJO */
 .fixed {
   background-color: lightgreen;
   position: fixed;
@@ -102,9 +103,12 @@ Posicionamiento CSS
   left: 400px;
 }
 
-/* sticky: es un combinación de posicionamiento relative y fixed, para este posicionamiento las propiedades de top, left, bottom y right no mueven el elemento, sirven como un punto de referencia, mientras no lleguen a ese valor el elemento se comporta como relative, cuando llega se convierte en fixed
+/* sticky: es un combinación de posicionamiento relative y fixed, para este posicionamiento las propiedades de top, left, bottom y right
+ no mueven el elemento, sirven como un punto de referencia, mientras no lleguen a ese valor el elemento se comporta como relative, 
+ cuando llega se convierte en fixed
 
-Para que este comportamiento funcione el elemento sticky debe ser hijo directo del body o su elemento contenedor debe tener dimensiones definidas y sólo será sticky dentro de las dimensiones de su contenedor padre. */
+Para que este comportamiento funcione el elemento sticky debe ser hijo directo del body o su elemento contenedor debe tener dimensiones definidas
+ y sólo será sticky dentro de las dimensiones de su contenedor padre. */
 .sticky {
   background-color: lightskyblue;
   position: sticky;

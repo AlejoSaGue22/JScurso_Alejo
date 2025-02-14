@@ -2001,6 +2001,15 @@ eventoM.addEventListener("click", (e)=>{
          }
       })
 
+      // FORMATEAR INPUT SOLO NUMEROS Y LETRAS
+      function formatInputToAlphanumeric(event) {
+        const input = event.target;
+        // Elimina cualquier carácter que no sea número o letra
+        input.value = input.value.replace(/[^a-zA-Z0-9]/g, '');
+    }
+      
+    document.getElementById('numfactRips').addEventListener('input', formatInputToAlphanumeric);
+
 // FORMATEAR NUMERO EN MONEDA CON SIGNO PESO
   //     $scope.FormatPesoID = function (NID) {
   //       const input = document.getElementById('' + NID + '');

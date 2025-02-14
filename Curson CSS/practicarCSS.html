@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* FORMULARIO DE CSS PARA PRACTICAR */
+        .formPractica{
+            display: flex;
+            flex-direction:column;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .posirelative{
+            position: relative;
+            background-color: red;
+            height: 300px;
+            width: 300px;
+            left: 30px;
+        }
+
+        .posiabsolutepadre{
+            position: relative;
+            background-color: greenyellow;
+            height: 600px;
+            width: 600px;
+            left: 70px;
+        }
+
+        .posiabsolute{
+            position: absolute;
+            background-color: blue;
+            height: 300px;
+            width: 300px;
+            bottom: 0;
+        }
+
+        .posifixes{
+            position: fixed;
+            background-color: rgb(81, 0, 255);
+            height: 300px;
+            width: 300px;
+            bottom: 0;
+            right: 0;
+            border-radius: 15px;
+            box-sizing: border-box;
+            padding: 60px;
+        }
+
+        .stickypadre{
+            position: relative;
+            background-color: rgb(255, 0, 255);
+            height: 600px;
+            width: 600px;
+            left: 70px;
+        }
+
+        .posisticky{
+            position: sticky;
+            background-color: rgb(255, 0, 0);
+            height: 300px;
+            width: 300px;
+            top: 0;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(0, 255, 0);
+            height: 600px;
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        i{
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Your </h2>
+
+    <div class="posirelative">posicion relative</div>
+    <div class="posiabsolutepadre">
+        <section class="posiabsolute">posicion absoluta</section>
+    </div>
+    <div>
+        <section class="posifixes">posicion fixed</section>
+    </div>
+    <div class="stickypadre">
+        <div class="posisticky">posicion sticky</div>
+    </div>
+    <section class="container">
+        <li class="liprimari">IOS, ANDROID</li>
+        <article>
+            esta es un ARTICLE Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Magnam ea iste delectus! Nihil animi voluptates architecto voluptas,
+            sunt fugiat, quae nostrum suscipit tempore blanditiis doloribus maiores
+            totam, commodi neque eius?
+        </article>
+        <li>HTML, CSS Y JAVASCRIPT</li>
+        <li>WEB, ESCRITORIO Y MOBILE</li>
+        <i class="icon">CLOUD, AWS, AZURE</i>
+        <article>
+            esta es un article 2 donde se prueba y se hace cosas para ver y probar del curso de Css
+            para mejor la practica de los estudiantes y del codigo
+        </article>
+        <li>SQL, SQLITE, NOSQL</li>
+    </section>
+    <i title="nuevo">esta es una span</i>
+    <span title="nuevo">esta otro  es una span</span>
+    <blockquote>esta es un blockquote</blockquote>
+            <span>esta es una span</span>
+    <blockquote class="guion-alado">esta es un blockquote</blockquote>
+    <strong class="esto strong">esta es una strong</strong>
+
+    <section class="prueba-nuevo status gaar">
+        <span>Esto es otra span dentro de una seccion</span>
+        <dialog open>
+            <p>Esto es un dialogo</p>
+        </dialog>
+        <details open>
+            <summary>Esta es un details con el title de summary</summary>
+            <article class="prueba-nuevo status gaar">
+                esta es un article 33333 dentro de un article unido con un detaild donde se prueba y se hace cosas
+                para ver y probar del curso de Css para mejor la practica de los estudiantes y del codigo
+            </article>
+        </details>
+    </section>
+    <hr>
+    <p>
+        La concurrencia y la coincidencia son términos que tienen significados similares, pero no idénticos: 
+Concurrencia:
+     Es la acción y efecto de concurrir, es decir, de que varias circunstancias, personas, sucesos o cosas coincidan en un mismo lugar o tiempo.
+    También puede referirse a un grupo de personas que asisten a un acto o reunión. 
+Coincidencia:
+    Es la acción y efecto de coincidir, es decir, de que algo suceda en el tiempo o en el espacio. También puede referirse a la conjunción, 
+    conformidad, concordancia, convergencia o concomitancia de opiniones. En el ámbito jurídico, la concurrencia se refiere a la comparecencia
+    de varias personas para hacer valer sus derechos en una causa común. 
+    </p>
+
+    <form class="formPractica">
+        <input type="text" name="texto" id="textonuevo" placeholder="Escribe tu nombre" required>
+        <input type="date" name="fecha" id="fechainicio" required>
+        <input type="password" name="contrasenia" id="contrasenia" placeholder="Contraseniaa" required>
+        <input type="email" name="contrasenia" id="email" placeholder="Escribe tu email" required>
+        <select disabled>
+            <optgroup label="Web">
+                <option value="">Html</option>
+                <option value="">Css</option>
+                <option value="">JS</option>
+            </optgroup>
+            <optgroup label="Escritorio">
+                <option value="">.Net</option>
+                <option value="">Java</option>
+            </optgroup>
+        </select>
+        <br>
+        <input type="radio" name="practicar" id="masculino" value="masculino">
+        <label for="masculino">Sexo</label>
+        <input type="radio" name="practicar" id="Amor" value="Amor">
+        <label for="Amor">Amor</label>
+        <input type="radio" name="practicar" id="culeo" value="culeo">
+        <label for="culeo">culeo</label>
+        <br><br>
+        <a href>Prueba</a>
+        <a href="https://www.google.com">Prueba 2</a>
+        <input type="reset" value="resetar">
+        <input type="submit" value="enviar">
+    </form>
+</body>
+</html>
